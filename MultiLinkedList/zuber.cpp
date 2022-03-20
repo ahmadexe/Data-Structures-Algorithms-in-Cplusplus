@@ -195,25 +195,85 @@ int displayEarningOfAllCars()
 
 int main(int argc, char const *argv[])
 {
-    insertCars("Ahmad", "BMW", 1, 2);
-    insertCars("Haider", "BMW", 2, 1);
-    insertCars("A", "BMW", 3, 2);
-    insertCars("Aad", "BMW", 4, 1);
-    insertCars("AVB", "BMW", 5, 2);
-    insertCars("Ahm", "BMW", 6, 2);
+    while (true)
+    {
+        int choiceMain;
+        cout << "1. Register new car\n2. Display details of all car.\n3. Display type of car.\n4. Add new ride.\n5. Display ride with detail.\n6. Total earning of a car.\n7. Display earning of all car.\n8. Exit\n";
+        cin >> choiceMain;
+        if (choiceMain == 1)
+        {
+            string dn, cn;
+            int reg; 
+            int type;
+            cout << "Enter name of driver: " << endl;
+            cin >> dn;
+            cout << "Enter name of car: " << endl;
+            cin >> cn;
+            cout << "Enter registration number of car: " << endl;
+            cin >> reg;
+            cout << "Enter type of car "<< endl;
+            cin >> type;
+            while (!(type < 3 && type > 0)){
+                cout << "Invalid car type, enter either 1 or 2 "<< endl;
+                cin >> type;
+            }
+            insertCars(dn, cn, reg, type);
+        }
+        else if (choiceMain == 2)
+        {
+            displayCars();
+        }
+        else if (choiceMain == 3)
+        {
+            int type;
+            cout << "Enter type of car " << endl;
+            cin >> type;
+            while (!(type < 3 && type > 0)){
+                cout << "Invalid car type, enter either 1 or 2 "<< endl;
+                cin >> type;
+            }
+            displayTypeCar(type);
+        }
+        else if (choiceMain == 4)
+        {
+            int km;
+            int regg;
+            string ridersName;
+            cout<<"Enter riders name: "<<endl;
+            cin>>ridersName;
+            cout<<"Enter car's registration: "<<endl;
+            cin>>regg;
+            cout<<"Enter distance: "<<endl;
+            cin>>km;
+            insertRide(ridersName,km,regg);
+        }
+        else if (choiceMain == 5)
+        {
+            int reg;
+            cout<<"Enter registration number: "<<endl;
+            cin>>reg;
+            displayRides(reg);
+        }
+        else if (choiceMain == 6)
+        {
+            int reg;
+            cout<<"Enter registration number: "<<endl;
+            cin>>reg;
+            cout<<totalEarning(reg)<<endl;
+        }
+        else if (choiceMain == 7)
+        {
+            cout<<displayEarningOfAllCars()<<endl;
+        }
+        else if (choiceMain == 8)
+        {
+            break;
+        }
+        else
+        {
+            cout<<"Invalid choice"<<endl;
+        }
+    }
 
-    insertRide("Try1", 10, 1);
-    insertRide("Try2", 1, 1);
-    insertRide("Try3", 3, 1);
-    insertRide("Try4", 12, 1);
-    insertRide("Try5", 2, 1);
-
-    // displayCars();
-    // displayRides(1);
-
-    // displayTypeCar(2);
-
-    cout << totalEarning(1) << endl;
-    cout << displayEarningOfAllCars() << endl;
     return 0;
 }
