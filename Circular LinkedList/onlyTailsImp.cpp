@@ -128,9 +128,6 @@ int main(int argc, char const *argv[])
     insert2(12);
     insert2(6);
     insert2(15);
-    // sort(tail);
-    // display(tail); 
-
 
     Node* z = merge();
     display(z);
