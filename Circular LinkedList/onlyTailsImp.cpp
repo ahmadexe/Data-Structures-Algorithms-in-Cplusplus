@@ -84,22 +84,13 @@ void sort(Node* x)
 Node* merge(){
 
     sort(tail2);
-    //cout<<"Check 1"<<endl;
-
     sort(tail);
-
-    Node* org = new Node();
     Node* p = new Node();
     Node* q = new Node();
     Node* c = new Node();
     Node* d = new Node();
-
-//    org = tail;
     p = tail->next;
-    //cout<<p->data<<endl;
     q = tail2->next;
-    //cout<<q->data<<endl;
-    //org = tail;
     while (q != tail2)
     {
         c = p->next;
