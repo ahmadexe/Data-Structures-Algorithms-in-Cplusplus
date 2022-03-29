@@ -77,8 +77,6 @@ void reverseIterative()
     struct NodeStudent *p = NULL;
     struct NodeStudent *c = head;
     struct NodeStudent *n;
-    // p = NULL;
-    // n = NULL;
     while (c != NULL)
     {
         n = c->next;

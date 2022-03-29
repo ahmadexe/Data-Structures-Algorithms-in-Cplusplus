@@ -113,6 +113,8 @@ int checkPalindrome(struct NodeStudent* midReversed){
         // cout<<q->id<<endl;
         // cout<<midReversed->id<<endl;
         if (p->id != q->id){
+            cout<<p->id<<endl;
+            cout<<q->id<<endl;
             // cout<<"Here 3";
             check++;
             break;
@@ -134,7 +136,6 @@ int checkPalindrome(struct NodeStudent* midReversed){
 
 int main(int argc, char const *argv[])
 {
-
     insertAtEnd(10, 1);
     insertAtEnd(20, 2);
     insertAtEnd(30, 3);
@@ -144,10 +145,9 @@ int main(int argc, char const *argv[])
     struct NodeStudent* headForPalindrome = getMid();
     struct NodeStudent* secondHead = reverseFromMid(headForPalindrome);
     //cout<<"w";
-    cout<<head->id<<head->next->id;
+    // cout<<head->id<<head->next->id;
     cout<<checkPalindrome(secondHead);
-    cout<<head->id<<head->next->id;
-
+    // cout<<head->id<<head->next->id;
     //cout<<"S";
     return 0;
 }

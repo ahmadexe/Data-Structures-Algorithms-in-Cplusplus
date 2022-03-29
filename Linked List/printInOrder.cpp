@@ -96,7 +96,6 @@ int main(int argc, char const *argv[])
     insert(40);
     insert(50);
     //insert(60);
-
     printLL();
     //display();
     return 0;
