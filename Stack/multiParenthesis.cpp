@@ -171,6 +171,6 @@ int balancedParenthesis(string str)
 
 int main(int argc, char const *argv[])
 {
-    cout << balancedParenthesis("[a*{b-{c+d}}]");
+    cout << balancedParenthesis("[a*(b-{c+d})]");
     return 0;
 }
