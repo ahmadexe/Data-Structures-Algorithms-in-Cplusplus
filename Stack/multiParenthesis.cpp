@@ -71,17 +71,20 @@ Stack *s = new Stack(99);
 
 int precedence(char c)
 {
-    if ('[')
+    if (c == '[')
     {
         return 3;
     }
-    else if ('{')
+    else if (c == '{')
     {
         return 2;
     }
-    else if ('(')
+    else if (c == '(')
     {
         return 1;
+    }
+    else{
+        return -1;
     }
 }
 
@@ -94,13 +97,32 @@ int balancedParenthesis(string str)
         {
             s->push('(');
         }
-        else if (str[i] == '{' && s->isEmpty() || str[i] == '{' && precedence('{') >= precedence(s->arr[s->top]))
+        else if (str[i] == '{')
         {
-            s->push('{');
+            if (s->isEmpty())
+            {
+                s->push('{');
+            }
+            else if (precedence('{') <= precedence(s->arr[s->top])){
+                //cout<<"CHeck "<<precedence('{')<<precedence(s->arr[s->top])<<endl;
+                s->push('{');
+            }
+            else{
+                return 0;
+            }
         }
-        else if (str[i] == '[' && s->isEmpty() || str[i] == '[' && precedence('[') >= precedence(s->arr[s->top]))
+        else if (str[i] == '[')
         {
-            s->push('[');
+            if (s->isEmpty())
+            {
+                s->push('[');
+            }
+            else if (precedence('[') <= precedence(s->arr[s->top])){
+                s->push('[');
+            }
+            else{
+                return 0;
+            }
         }
         else if (str[i] == ']')
         {
@@ -149,6 +171,6 @@ int balancedParenthesis(string str)
 
 int main(int argc, char const *argv[])
 {
-    cout << balancedParenthesis("[{(())}]");
+    cout << balancedParenthesis("[a*{b-{c+d}}]");
     return 0;
 }

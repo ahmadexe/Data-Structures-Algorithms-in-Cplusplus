@@ -95,7 +95,7 @@ int main(int argc, char const *argv[])
 {
   
 
-    cout<<balancedParenthesis("(())");
+    cout<<balancedParenthesis("(a*(b-c))");
     
 
 
