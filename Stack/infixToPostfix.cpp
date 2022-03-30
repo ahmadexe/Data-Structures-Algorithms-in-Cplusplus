@@ -6,12 +6,13 @@ class Stack
 {
 public:
     int top = -1;
-    vector<char> arr;
+    char* arr;
     int size;
 
     Stack(int size)
     {
         this->size = size;
+        this->arr = (char*)malloc(sizeof(char) * this->size);
     }
 
     int isEmpty()
@@ -20,10 +21,7 @@ public:
         {
             return 1;
         }
-        else
-        {
-            return 0;
-        }
+        return 0;
     }
 
     int isFull()
@@ -32,10 +30,7 @@ public:
         {
             return 1;
         }
-        else
-        {
-            return 0;
-        }
+        return 0;
     }
 
     void push(char data)
@@ -47,7 +42,7 @@ public:
         else
         {
             this->top++;
-            this->arr.push_back(data);
+            this->arr[top] = data;
         }
     }
 
@@ -108,12 +103,12 @@ string postfix(string infix)
                 result += s->arr[s->top];
                 s->pop();
             }
-            if (s->isEmpty() == 0){
+            if (!s->isEmpty()){
                 s->pop();
             }
         }
         else{
-            while (s->isEmpty() == 0 && precedence(s->arr[s->top]) > precedence(infix[i]))
+            while (s->isEmpty() == 0 && precedence(s->arr[s->top]) >= precedence(infix[i]))
             {
                 result += s->arr[s->top];
                 s->pop();
@@ -132,6 +127,6 @@ string postfix(string infix)
 
 int main(int argc, char const *argv[])
 {
-    cout<<postfix("(a+b)*(c/d-l)");
+    cout<<postfix("a+b*c+(d*e+f)*g");
     return 0;
 }

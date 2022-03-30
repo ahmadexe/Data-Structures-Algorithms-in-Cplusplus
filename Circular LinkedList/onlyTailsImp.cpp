@@ -107,23 +107,17 @@ Node* merge(){
 
 int main(int argc, char const *argv[])
 {
-
     insert(12);
     insert(28);
     insert(18);
     insert(25);
     insert(19);
-
     insert2(5);
     insert2(24);
     insert2(12);
     insert2(6);
     insert2(15);
-
     Node* z = merge();
     display(z);
-
-
-
     return 0;
 }
