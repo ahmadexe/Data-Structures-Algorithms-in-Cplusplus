@@ -100,7 +100,6 @@ void reverse()
 
 int main(int argc, char const *argv[])
 {
-
     s->push(5);
     s->push(4);
     s->push(3);
@@ -112,8 +111,5 @@ int main(int argc, char const *argv[])
     cout<<s->pop()<<endl;
     cout<<s->pop()<<endl;
     cout<<s->pop()<<endl;
-
-
-
     return 0;
 }
