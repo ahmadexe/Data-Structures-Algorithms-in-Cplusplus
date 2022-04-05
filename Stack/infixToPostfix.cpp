@@ -88,8 +88,7 @@ string postfix(string infix)
     string result = "";
     int i = 0;
     while (i < infix.size())
-    {
-        
+    {    
         if ((infix[i] >= 'a' && infix[i] <= 'z') || (infix[i] >= 'A' && infix[i] <= 'Z'))
         {         
             result += infix[i];

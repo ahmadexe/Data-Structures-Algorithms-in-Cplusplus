@@ -60,7 +60,6 @@ public:
         }
         cout << "Stack underflow" << endl;
         return -1;
-        
     }
 };
 

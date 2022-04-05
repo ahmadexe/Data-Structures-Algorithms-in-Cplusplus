@@ -104,7 +104,6 @@ int balancedParenthesis(string str)
                 s->push('{');
             }
             else if (precedence('{') <= precedence(s->arr[s->top])){
-                //cout<<"CHeck "<<precedence('{')<<precedence(s->arr[s->top])<<endl;
                 s->push('{');
             }
             else{
