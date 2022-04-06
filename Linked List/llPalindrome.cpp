@@ -11,7 +11,7 @@ struct NodeStudent
 
 struct NodeStudent *head = NULL;
 struct NodeStudent *tail = NULL;
-//struct NodeStudent *node = head;
+// struct NodeStudent *node = head;
 
 int isEmpty()
 {
@@ -74,7 +74,7 @@ void printList()
     }
 }
 
-struct NodeStudent* getMid()
+struct NodeStudent *getMid()
 {
     struct NodeStudent *slow_ptr = head;
     struct NodeStudent *fast_ptr = head;
@@ -85,51 +85,52 @@ struct NodeStudent* getMid()
             fast_ptr = fast_ptr->next->next;
             slow_ptr = slow_ptr->next;
         }
-        //cout << "The middle element is [" << slow_ptr->id << "]" << endl;
+        // cout << "The middle element is [" << slow_ptr->id << "]" << endl;
     }
     return slow_ptr;
-
 }
 
-struct NodeStudent* reverseFromMid(struct NodeStudent* mid){
-    if (mid->next == NULL || mid == NULL){
+struct NodeStudent *reverseFromMid(struct NodeStudent *mid)
+{
+    if (mid->next == NULL || mid == NULL)
+    {
         return mid;
     }
-    else {
-        struct NodeStudent* newHead = reverseFromMid(mid->next);
+    else
+    {
+        struct NodeStudent *newHead = reverseFromMid(mid->next);
         mid->next->next = mid;
         mid->next = NULL;
         return newHead;
     }
 }
 
-int checkPalindrome(struct NodeStudent* midReversed){
-    struct NodeStudent* p = head;
-    struct NodeStudent* q = midReversed;
+int checkPalindrome(struct NodeStudent *midReversed)
+{
+    struct NodeStudent *p = head;
+    struct NodeStudent *q = midReversed;
     int check = 0;
-    while (q){
-        // cout<<"Here 2";
-        // cout<<p->id<<endl;
-        // cout<<q->id<<endl;
-        // cout<<midReversed->id<<endl;
-        if (p->id != q->id){
-            cout<<p->id<<endl;
-            cout<<q->id<<endl;
-            // cout<<"Here 3";
+    while (q)
+    {
+        if (p->id != q->id)
+        {
+            cout << p->id << endl;
+            cout << q->id << endl;
             check++;
             break;
         }
-        else{
-        p = p->next;
-        q = q->next;
+        else
+        {
+            p = p->next;
+            q = q->next;
         }
     }
-    if (check == 0){
-        // cout<<"Here 6";   
+    if (check == 0)
+    {
         return 1;
     }
-    else{
-        // cout<<"Here 7";
+    else
+    {
         return 0;
     }
 }
@@ -142,12 +143,8 @@ int main(int argc, char const *argv[])
     insertAtEnd(30, 3);
     insertAtEnd(20, 2);
     insertAtEnd(10, 1);
-    struct NodeStudent* headForPalindrome = getMid();
-    struct NodeStudent* secondHead = reverseFromMid(headForPalindrome);
-    //cout<<"w";
-    // cout<<head->id<<head->next->id;
-    cout<<checkPalindrome(secondHead);
-    // cout<<head->id<<head->next->id;
-    //cout<<"S";
+    struct NodeStudent *headForPalindrome = getMid();
+    struct NodeStudent *secondHead = reverseFromMid(headForPalindrome);
+    cout << checkPalindrome(secondHead);
     return 0;
 }
