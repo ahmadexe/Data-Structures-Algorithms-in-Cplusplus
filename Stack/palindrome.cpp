@@ -72,21 +72,16 @@ int palindrome(string str)
     {
         if (str[i] != s->pop())
         {
-            flag = 0;
-            break;
+            return 0;
         }
     }
-
-    if (flag){
-        return 1;
-    }
-    return 0;
+    return 1;
 }
 
 int main(int argc, char const *argv[])
 {
 
-    cout<<palindrome("civi");
+    cout<<palindrome("civic");
 
 
     return 0;
