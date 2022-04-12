@@ -19,7 +19,14 @@ void insert(int data)
         cur->left = NULL;
         cur->right = NULL;
     }
-    
+    else {
+        Node* p = new Node;
+        p = root;
+        while (p->left != NULL || p->right != NULL){
+            
+        }
+
+    }
 }
 
 int main(int argc, char const *argv[])
