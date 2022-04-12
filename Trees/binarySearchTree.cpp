@@ -39,18 +39,16 @@ void insert(int data)
         p = cur;
     }
 }
-Node* x = root;
-void inOrder()
+
+void inOrder(Node* x)
 {
     if (!x)
     {
         return;
     }
-    x = x->left;
-    inOrder();
+    inOrder(x->left);
     cout<<x->data<<" ";
-    x = x->right;
-    inOrder();
+    inOrder(x->right);
 }
 
 int main(int argc, char const *argv[])
@@ -58,6 +56,7 @@ int main(int argc, char const *argv[])
     insert(30);
     insert(20);
     insert(50);
-    inOrder();
+    Node* z = root;
+    inOrder(z);
     return 0;
 }
