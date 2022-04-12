@@ -25,18 +25,27 @@ void insert(int data)
     {
         Node *p = new Node;
         p = root;
+        Node* temp = new Node;
         while (p != NULL)
         {
             if (p->data < data)
             {
+                temp = p;
                 p = p->right;
             }
             else
             {
+                temp = p;
                 p = p->left;
             }
         }
         p = cur;
+        if (p->data > temp->data){
+            temp->right = p;
+        }
+        else {
+            temp->left = p;
+        }
     }
 }
 
@@ -53,8 +62,14 @@ void inOrder(Node* x)
 
 int main(int argc, char const *argv[])
 {
+
     insert(30);
     insert(20);
-    //insert(50);
+    insert(50);
+    insert(70);
+    insert(40);
+    insert(60);
+    Node* z = root;
+    inOrder(z);
     return 0;
 }
