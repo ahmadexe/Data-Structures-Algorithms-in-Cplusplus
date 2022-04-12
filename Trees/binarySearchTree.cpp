@@ -9,7 +9,12 @@ struct Node
     Node* left;
 };
 
+Node* root = NULL;
 
+void insert(int data)
+{
+    
+}
 
 int main(int argc, char const *argv[])
 {
