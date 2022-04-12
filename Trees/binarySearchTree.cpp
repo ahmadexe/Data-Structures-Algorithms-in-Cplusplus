@@ -25,7 +25,7 @@ void insert(int data)
     {
         Node *p = new Node;
         p = root;
-        while (p->left != NULL || p->right != NULL)
+        while (p)
         {
             if (p->data < data)
             {
@@ -36,13 +36,7 @@ void insert(int data)
                 p = p->left;
             }
         }
-        if (data > p->data)
-        {
-            p->right = cur;
-        }
-        else{
-            p->left = cur;
-        }
+        p = cur;
     }
 }
 
