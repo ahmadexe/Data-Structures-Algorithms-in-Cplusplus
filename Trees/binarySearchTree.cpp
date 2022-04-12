@@ -4,12 +4,12 @@ using namespace std;
 
 struct Node
 {
-    char data;
+    int data;
     Node *right;
     Node *left;
 };
 
-Node *root = NULL;
+Node* root = NULL;
 
 void insert(int data)
 {
@@ -39,9 +39,25 @@ void insert(int data)
         p = cur;
     }
 }
+Node* x = root;
+void inOrder()
+{
+    if (!x)
+    {
+        return;
+    }
+    x = x->left;
+    inOrder();
+    cout<<x->data<<" ";
+    x = x->right;
+    inOrder();
+}
 
 int main(int argc, char const *argv[])
 {
-
+    insert(30);
+    insert(20);
+    insert(50);
+    inOrder();
     return 0;
 }
