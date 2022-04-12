@@ -18,12 +18,13 @@ void insert(int data)
         cur->data = data;
         cur->left = NULL;
         cur->right = NULL;
+        root = cur;
     }
     else {
         Node* p = new Node;
         p = root;
         while (p->left != NULL || p->right != NULL){
-            
+
         }
 
     }
