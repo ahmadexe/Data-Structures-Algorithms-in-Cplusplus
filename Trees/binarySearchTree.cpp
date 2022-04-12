@@ -13,7 +13,9 @@ Node* root = NULL;
 
 void insert(int data)
 {
-    
+    if (!root) {
+        Node* cur = new Node;
+    }
 }
 
 int main(int argc, char const *argv[])
