@@ -25,7 +25,7 @@ void insert(int data)
     {
         Node *p = new Node;
         p = root;
-        while (p)
+        while (p != NULL)
         {
             if (p->data < data)
             {
