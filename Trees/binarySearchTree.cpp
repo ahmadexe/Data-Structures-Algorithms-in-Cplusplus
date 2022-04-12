@@ -55,8 +55,6 @@ int main(int argc, char const *argv[])
 {
     insert(30);
     insert(20);
-    insert(50);
-    Node* z = root;
-    inOrder(z);
+    //insert(50);
     return 0;
 }
