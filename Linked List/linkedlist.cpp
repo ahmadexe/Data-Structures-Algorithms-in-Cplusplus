@@ -348,13 +348,6 @@ void deleteBefore(int idToDeleteBefore)
 
 int main(int argc, char const *argv[])
 {
-    // insertAtEnd(101, 52);
-    // insertAtStart(99, 7);
-    // inserAfterValue(7, 200, 50);
-    // insertAtEnd(900, 90);
-    // deleteBefore(50);
-    // cout<<"S";
-
     while (1)
     {
         int choiceMain;

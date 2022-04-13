@@ -78,12 +78,21 @@ int deQueueLast(Queue *q)
     return -1;
 }
 
+void printArray(Queue* q)
+{
+    for (int i = q->front; i <= q->rear; i++)
+    {
+        cout<<q->arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
 int main(int argc, char const *argv[])
 {
 
     Queue *q = new Queue;
     q->size = 5;
     q->arr = (int *)malloc(sizeof(int) * q->size);
-   
+    
     return 0;
 }
