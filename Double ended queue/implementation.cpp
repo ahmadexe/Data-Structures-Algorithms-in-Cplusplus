@@ -47,7 +47,7 @@ public:
         }
         else if (this->f == 0)
         {
-            this->r++;
+            this->r += 1;
             int i = this->r;
             int j = i-1;
             while (j >= 0)
@@ -56,7 +56,7 @@ public:
                 i--;
                 j--;
             }
-            this->arr[j] = val;
+            this->arr[0] = val;
         }
         else
         {
@@ -64,13 +64,26 @@ public:
             this->arr[this->f] = val;
         }
     }
+    void printArray()
+    {
+        for (int i = this->f; i <= this->r; i++)
+        {
+            cout<<this->arr[i]<<" ";
+        }
+        cout<<endl;
+    }
 };
 
 int main(int argc, char const *argv[])
 {
     DEQueue *q = new DEQueue(5);
-    cout << q->isFull() << endl;
-    cout << q->isEmpty() << endl;
+    q->enQueueFront(10);
+    q->enQueueFront(20);
+    q->enQueueFront(30);
+    q->enQueueFront(40);
+    q->enQueueFront(50);
+
+    //q->printArray();
 
     return 0;
 }
