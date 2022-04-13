@@ -64,6 +64,15 @@ int deQueueFirst(Queue *q)
 {
     if (!isEmpty(q))
     {
+        if (q->front == 0 && q->rear == 0)
+        {
+            int val = q->arr[q->front];
+            q->front--;
+            q->rear--;
+            return val;
+        }
+        else
+        {
         int value = q->arr[q->front];
         int i = 0;
         int j = 1;
@@ -80,6 +89,7 @@ int deQueueFirst(Queue *q)
             q->rear = -1;
         }
         return value;
+        }
     }
     return -1;
 }
@@ -122,6 +132,28 @@ void enQueueFirst(Queue *q, int val)
         }
         q->arr[j] = val;
         q->rear++;
+    }
+}
+
+int deQueueLast(Queue* q)
+{
+    if (isEmpty(q))
+    {
+        cout<<"Can't, Queue undeflow"<<endl;
+        return -1;
+    }
+    else if (q->rear == 0)
+    {
+        int value = q->arr[q->rear];
+        q->rear--;
+        q->front--;
+        return value; 
+    }
+    else
+    {
+        int value = q->arr[q->rear];
+        q->rear--;
+        return value;
     }
 }
 
