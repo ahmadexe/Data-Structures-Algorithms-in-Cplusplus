@@ -128,6 +128,8 @@ int main(int argc, char const *argv[])
     enQueueFirst(q,20);
     enQueueFirst(q,40);
     enQueueFirst(q,50);
+    enQueueFirst(q,60);
+    enQueueFirst(q,60);
 
     printArray(q);
 
