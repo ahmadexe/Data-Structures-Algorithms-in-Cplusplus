@@ -78,6 +78,28 @@ Node *search(Node *x, int key)
     return x;
 }
 
+int searchRecursive(Node* x, int key)
+{
+    int check = 0;
+    if (!x)
+    {
+        return NULL;
+    }
+    if (key > x->data)
+    {
+        searchRecursive(x->right, key);
+    }
+    else if (key < x->data)
+    {
+        searchRecursive(x->left, key);
+    }
+    else
+    {
+        check++;
+    }
+    return check;
+}
+
 int main(int argc, char const *argv[])
 {
     insert(30);
