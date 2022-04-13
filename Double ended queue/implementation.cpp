@@ -10,19 +10,6 @@ struct Queue
     int *arr;
 };
 
-void enQueueLast(Queue *qu, int value)
-{
-    if (qu->front == -1 && qu->rear == -1)
-    {
-        qu->arr[++qu->front] = value;
-        qu->rear++;
-    }
-    else
-    {
-        qu->rear = (qu->rear + 1) % qu->size;
-        qu->arr[qu->rear] = value;
-    }
-}
 
 int isEmpty(Queue *qu)
 {
@@ -41,6 +28,25 @@ int isFull(Queue *q)
     }
     return 0;
 }
+
+void enQueueLast(Queue *qu, int value)
+{
+    if (isFull(qu))
+    {
+        cout<<"Queue overflow"<<endl;
+    }
+    else if (qu->front == -1 && qu->rear == -1)
+    {
+        qu->arr[++qu->front] = value;
+        qu->rear++;
+    }
+    else
+    {
+        qu->rear = (qu->rear + 1) % qu->size;
+        qu->arr[qu->rear] = value;
+    }
+}
+
 
 void peek(Queue *q)
 {
