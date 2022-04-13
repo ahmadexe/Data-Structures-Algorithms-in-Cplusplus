@@ -100,7 +100,6 @@ int searchRecursive(Node *x, int key)
     }
 
     return check;
-
 }
 
 int main(int argc, char const *argv[])
