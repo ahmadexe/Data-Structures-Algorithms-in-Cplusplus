@@ -60,6 +60,11 @@ void inOrder(Node* x)
     inOrder(x->right);
 }
 
+Node* search(Node* x, int key)
+{
+    
+}
+
 int main(int argc, char const *argv[])
 {
 
