@@ -93,11 +93,18 @@ void enQueueFirst(Queue* q, int val)
     {
         cout<<"CAN'T"<<endl;
     }
+    else if (isEmpty(q))
+    {
+        q->front++;
+        q->rear++;
+        q->arr[q->front] = val;
+        cout<<"Here 1"<<endl;
+    }
     else if (q->front != 0){
         q->front--;
         q->arr[q->front] = val;
     }
-    else if (q->front == 0 && q->rear != q->size - 1)
+    else if (q->front == 0)
     {
         int i = q->rear;
         int j = i+1;
@@ -108,6 +115,7 @@ void enQueueFirst(Queue* q, int val)
             i--;
         }
         q->arr[j] = val;
+        cout<<"Here 2"<<endl;
     }
 }
 
