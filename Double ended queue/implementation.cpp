@@ -2,52 +2,98 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Deq
+struct Queue
 {
-
-public:
-    int front;
-    int rear;
+    int front = -1;
+    int rear = -1;
     int size;
-    int arr[100];
-    Deq(int s)
-    {
-        rear = -1;
-        front = -1;
-        size = s;
-    }
-    int isFull()
-    {
-        if (front == 0 && rear == size - 1)
-        {
-            return 1;
-        }
-        return 0;
-    }
-
-    int isEmpty()
-    {
-        if (front = -1 || rear == -1)
-        {
-            return 1;
-        }
-        return 0;
-    }
+    int *arr;
 };
 
-void insertAtEnd(Deq *q, int key)
+void enQueue(Queue *qu, int value)
 {
-    if (q->isEmpty())
+    if (qu->front == -1 && qu->rear == -1)
     {
-        q->front++;
-        q->rear++;
-        q->arr[q->front] = key;
+        qu->arr[++qu->front] = value;
+        qu->rear++;
     }
-    
+    else
+    {
+        qu->rear++;
+        qu->arr[qu->rear] = value;
+    }
+}
+
+int isEmpty(Queue *qu)
+{
+    if (qu->front == -1 && qu->rear == -1)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int isFull(Queue *q)
+{
+    if (q->front == 0 && q->rear == q->size - 1)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+void peek(Queue *q)
+{
+    if (!isEmpty(q))
+    {
+        cout << q->arr[q->front];
+    }
+    else
+    {
+        cout << "Can't peekm Queue underflow" << endl;
+    }
+}
+
+int deQueue(Queue *q)
+{
+    if (!isEmpty(q))
+    {
+        int value = q->arr[q->front];
+        int i = 0;
+        int j = 1;
+        while (j <= q->rear)
+        {
+            q->arr[i] = q->arr[j];
+            i++;
+            j++;
+        }
+        q->rear--;
+        if (q->front > q->rear)
+        {
+            q->front = -1;
+            q->rear = -1;
+        }
+        return value;
+    }
+    return -1;
 }
 
 int main(int argc, char const *argv[])
 {
 
+    Queue *q = new Queue;
+    q->size = 5;
+    q->arr = (int *)malloc(sizeof(int) * q->size);
+    enQueue(q, 10);
+    enQueue(q, 20);
+    enQueue(q, 30);
+    enQueue(q, 40);
+    enQueue(q, 50);
+    cout << deQueue(q) << endl;
+    cout << deQueue(q) << endl;
+    cout << deQueue(q) << endl;
+    cout << deQueue(q) << endl;
+    cout << deQueue(q) << endl;
+    cout << isEmpty(q) << endl;
     return 0;
 }
