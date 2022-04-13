@@ -53,6 +53,17 @@ void printArray(Queue *q)
     cout << endl;
 }
 
+int deQueueMinimum(Queue* q)
+{
+    if (isEmpty(q))
+    {
+        return -1;
+    }
+    return q->arr[q->front++];
+}
+
+
+
 int main(int argc, char const *argv[])
 {
 
@@ -66,7 +77,8 @@ int main(int argc, char const *argv[])
     enQueue(q, 40);
     enQueue(q, 30);
     enQueue(q, 15);
-
+    printArray(q);
+    deQueueMinimum(q);
     printArray(q);
 
     return 0;
