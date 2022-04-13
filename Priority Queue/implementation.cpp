@@ -62,7 +62,14 @@ int deQueueMinimum(Queue* q)
     return q->arr[q->front++];
 }
 
-
+int deQueueMaximum(Queue* q)
+{
+    if (isEmpty(q))
+    {
+        return -1;
+    }
+    return q->arr[q->rear--];
+}
 
 int main(int argc, char const *argv[])
 {
@@ -80,6 +87,6 @@ int main(int argc, char const *argv[])
     printArray(q);
     deQueueMinimum(q);
     printArray(q);
-
+    
     return 0;
 }
