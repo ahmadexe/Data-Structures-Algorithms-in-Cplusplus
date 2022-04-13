@@ -62,7 +62,15 @@ void inOrder(Node* x)
 
 Node* search(Node* x, int key)
 {
-    
+    while (x && x->data != key){
+        if (key > x->data) {
+            x = x->right;
+        }
+        else{
+            x = x->left;
+        }
+    }
+    return x;
 }
 
 int main(int argc, char const *argv[])
@@ -75,6 +83,6 @@ int main(int argc, char const *argv[])
     insert(40);
     insert(60);
     Node* z = root;
-    inOrder(z);
+    
     return 0;
 }
