@@ -10,7 +10,7 @@ struct Queue
     int *arr;
 };
 
-void enQueueFront(Queue *qu, int value)
+void enQueueLast(Queue *qu, int value)
 {
     if (qu->front == -1 && qu->rear == -1)
     {
@@ -54,7 +54,7 @@ void peek(Queue *q)
     }
 }
 
-int deQueueLast(Queue *q)
+int deQueueFirst(Queue *q)
 {
     if (!isEmpty(q))
     {
@@ -87,17 +87,14 @@ void printArray(Queue* q)
     cout<<endl;
 }
 
+
+
 int main(int argc, char const *argv[])
 {
 
     Queue *q = new Queue;
     q->size = 5;
     q->arr = (int *)malloc(sizeof(int) * q->size);
-    enQueueFront(q, 10);
-    enQueueFront(q, 20);
-    enQueueFront(q, 30);
-    enQueueFront(q, 40);
-    enQueueFront(q, 50);
     printArray(q);
 
     return 0;
