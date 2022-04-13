@@ -75,7 +75,6 @@ Node* search(Node* x, int key)
 
 int main(int argc, char const *argv[])
 {
-
     insert(30);
     insert(20);
     insert(50);
