@@ -32,11 +32,13 @@ void enQueue(Queue* q, int value)
     {
         int i = q->rear;
         int j = i+1;
-        while (i != -1 && q->arr[j] <= value)
+        while (i != -1 && q->arr[i] > value)
         {
+            q->arr[j] = q->arr[i];
             i--;
             j--;
         }
+        q->arr[j] = q->arr[i];
         q->arr[j] = value;
         q->rear++;
     }
@@ -59,10 +61,12 @@ int main(int argc, char const *argv[])
     q->rear = -1;
     q->size = 5;
     q->arr = (int *)malloc(sizeof(int) * q->size);
-    enQueue(q,30);
-    enQueue(q,20);
-    enQueue(q,50);
     enQueue(q,10);
+    enQueue(q,20);
+    enQueue(q,40);
+    enQueue(q,30);
+    enQueue(q,15);
+ 
     printArray(q);
 
     return 0;
