@@ -168,7 +168,7 @@ int main(int argc, char const *argv[])
     enQueueFirst(q,30);
     enQueueFirst(q,40);
     enQueueLast(q,50);
-
+    printArray(q);
     printArray(q);
 
     return 0;
