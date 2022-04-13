@@ -53,7 +53,7 @@ void printArray(Queue *q)
     cout << endl;
 }
 
-int deQueueMinimum(Queue* q)
+int deQueueMinimum(Queue *q)
 {
     if (isEmpty(q))
     {
@@ -62,7 +62,7 @@ int deQueueMinimum(Queue* q)
     return q->arr[q->front++];
 }
 
-int deQueueMaximum(Queue* q)
+int deQueueMaximum(Queue *q)
 {
     if (isEmpty(q))
     {
