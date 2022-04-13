@@ -45,7 +45,24 @@ public:
         {
             cout<<"Can't add from head"<<endl;
         }
-        
+        else if (this->f == 0)
+        {
+            this->r++;
+            int i = this->r;
+            int j = i-1;
+            while (j >= 0)
+            {
+                this->arr[i] = this->arr[j];
+                i--;
+                j--;
+            }
+            this->arr[j] = val;
+        }
+        else
+        {
+            this->f--;
+            this->arr[this->f] = val;
+        }
     }
 };
 
