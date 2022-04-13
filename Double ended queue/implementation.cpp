@@ -93,6 +93,12 @@ int main(int argc, char const *argv[])
     Queue *q = new Queue;
     q->size = 5;
     q->arr = (int *)malloc(sizeof(int) * q->size);
-    
+    enQueueFront(q, 10);
+    enQueueFront(q, 20);
+    enQueueFront(q, 30);
+    enQueueFront(q, 40);
+    enQueueFront(q, 50);
+    printArray(q);
+
     return 0;
 }
