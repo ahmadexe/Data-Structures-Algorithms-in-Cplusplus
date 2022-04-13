@@ -19,7 +19,7 @@ void enQueueLast(Queue *qu, int value)
     }
     else
     {
-        qu->rear++;
+        qu->rear = (qu->rear+1)%qu->size;
         qu->arr[qu->rear] = value;
     }
 }
@@ -128,8 +128,9 @@ int main(int argc, char const *argv[])
     enQueueFirst(q,20);
     enQueueFirst(q,40);
     enQueueFirst(q,50);
+    deQueueFirst(q);
     enQueueFirst(q,60);
-    enQueueFirst(q,60);
+    enQueueFirst(q,70);
 
     printArray(q);
 
