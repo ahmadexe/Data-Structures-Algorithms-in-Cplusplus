@@ -16,7 +16,7 @@ public:
     }
     int isEmpty()
     {
-        if ((this->f == this->r - 1) || (this->f == -1 && this->r == -1))
+        if ((f == r - 1) || (f == -1 && r == -1))
         {
             this->f == -1;
             this->r == -1;
@@ -26,7 +26,7 @@ public:
     }
     int isFull()
     {
-        if (this->f = 0 && this->r == this->size - 1)
+        if (this->f == 0 && this->r == this->size - 1)
         {
             return 1;
         }
@@ -41,6 +41,11 @@ public:
             this->r++;
             this->arr[this->f] == val;
         }
+        else if (this->isFull())
+        {
+            cout<<"Can't add from head"<<endl;
+        }
+        
     }
 };
 
