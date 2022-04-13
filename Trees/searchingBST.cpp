@@ -9,7 +9,7 @@ struct Node
     Node *left;
 };
 
-Node* root = NULL;
+Node *root = NULL;
 
 void insert(int data)
 {
@@ -25,7 +25,7 @@ void insert(int data)
     {
         Node *p = new Node;
         p = root;
-        Node* temp = new Node;
+        Node *temp = new Node;
         while (p != NULL)
         {
             if (p->data < data)
@@ -40,33 +40,38 @@ void insert(int data)
             }
         }
         p = cur;
-        if (p->data > temp->data){
+        if (p->data > temp->data)
+        {
             temp->right = p;
         }
-        else {
+        else
+        {
             temp->left = p;
         }
     }
 }
 
-void inOrder(Node* x)
+void inOrder(Node *x)
 {
     if (!x)
     {
         return;
     }
     inOrder(x->left);
-    cout<<x->data<<" ";
+    cout << x->data << " ";
     inOrder(x->right);
 }
 
-Node* search(Node* x, int key)
+Node *search(Node *x, int key)
 {
-    while (x && x->data != key){
-        if (key > x->data) {
+    while (x && x->data != key)
+    {
+        if (key > x->data)
+        {
             x = x->right;
         }
-        else{
+        else
+        {
             x = x->left;
         }
     }
@@ -81,14 +86,15 @@ int main(int argc, char const *argv[])
     insert(70);
     insert(40);
     insert(60);
-    Node* z = root;
-    Node* a = search(z,80);
+    Node *z = root;
+    Node *a = search(z, 80);
     if (a)
     {
-        cout<<a->data;
+        cout << a->data;
     }
-    else{
-        cout<<"Node not present"<<endl;
+    else
+    {
+        cout << "Node not present" << endl;
     }
     return 0;
 }
