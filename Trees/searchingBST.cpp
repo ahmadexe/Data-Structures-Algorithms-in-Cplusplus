@@ -79,11 +79,15 @@ Node *search(Node *x, int key)
 }
 int found = 0;
 int check = 0;
-
 int searchRecursive(Node *x, int key)
 {
     if (!x)
     {
+        return 0;
+    }
+    if (x->data == key)
+    {
+        check = 1;
         return 0;
     }
     if (key > x->data)
@@ -94,20 +98,9 @@ int searchRecursive(Node *x, int key)
     {
         searchRecursive(x->left, key);
     }
-    else
-    {
-        check++;
-    }
 
-    if (check)
-    {
-        found = 1;
-    }
-    else
-    {
-        found = 0;
-    }
-    return found;
+    return check;
+
 }
 
 int main(int argc, char const *argv[])
@@ -119,15 +112,6 @@ int main(int argc, char const *argv[])
     insert(40);
     insert(60);
     Node *z = root;
-    // Node *a = search(z, 80);
-    //  if (a)
-    //  {
-    //      cout << a->data;
-    //  }
-    //  else
-    //  {
-    //      cout << "Node not present" << endl;
-    //  }
-    cout << searchRecursive(z, 80);
+    cout << searchRecursive(z, 60);
     return 0;
 }
