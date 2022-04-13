@@ -88,7 +88,7 @@ int searchRecursive(Node *x, int key)
     if (x->data == key)
     {
         check = 1;
-        return 0;
+        return 1;
     }
     if (key > x->data)
     {
@@ -111,6 +111,6 @@ int main(int argc, char const *argv[])
     insert(40);
     insert(60);
     Node *z = root;
-    cout << searchRecursive(z, 60);
+    cout << searchRecursive(z, 50);
     return 0;
 }
