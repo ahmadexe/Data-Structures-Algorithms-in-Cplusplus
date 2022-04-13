@@ -20,7 +20,7 @@ int isEmpty(Queue *q)
     return (q->front == -1 && q->rear == -1);
 }
 
-void enQueue(Queue* q, int value)
+void enQueue(Queue *q, int value)
 {
     if (isEmpty(q))
     {
@@ -31,7 +31,7 @@ void enQueue(Queue* q, int value)
     else
     {
         int i = q->rear;
-        int j = i+1;
+        int j = i + 1;
         while (i != -1 && q->arr[i] > value)
         {
             q->arr[j] = q->arr[i];
@@ -44,13 +44,13 @@ void enQueue(Queue* q, int value)
     }
 }
 
-void printArray(Queue* q)
+void printArray(Queue *q)
 {
     for (int i = q->front; i <= q->rear; i++)
     {
-        cout<<q->arr[i]<<" "<<endl;
+        cout << q->arr[i] << " " << endl;
     }
-    cout<<endl;
+    cout << endl;
 }
 
 int main(int argc, char const *argv[])
@@ -61,12 +61,12 @@ int main(int argc, char const *argv[])
     q->rear = -1;
     q->size = 5;
     q->arr = (int *)malloc(sizeof(int) * q->size);
-    enQueue(q,10);
-    enQueue(q,20);
-    enQueue(q,40);
-    enQueue(q,30);
-    enQueue(q,15);
- 
+    enQueue(q, 10);
+    enQueue(q, 20);
+    enQueue(q, 40);
+    enQueue(q, 30);
+    enQueue(q, 15);
+
     printArray(q);
 
     return 0;
