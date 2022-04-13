@@ -88,7 +88,7 @@ int searchRecursive(Node *x, int key)
     if (x->data == key)
     {
         check = 1;
-        return 1;
+        return check;
     }
     if (key > x->data)
     {
