@@ -87,6 +87,7 @@ int main(int argc, char const *argv[])
     printArray(q);
     deQueueMinimum(q);
     printArray(q);
-    
+    deQueueMaximum(q);
+    printArray(q);
     return 0;
 }
