@@ -97,7 +97,7 @@ void enQueueFirst(Queue* q, int val)
         q->front--;
         q->arr[q->front] = val;
     }
-    else if (q->front == 0)
+    else if (q->front == 0 && q->rear != q->size - 1)
     {
         int i = q->rear;
         int j = i+1;
