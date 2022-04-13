@@ -87,7 +87,29 @@ void printArray(Queue* q)
     cout<<endl;
 }
 
-
+void enQueueFirst(Queue* q, int val)
+{
+    if (isFull(q))
+    {
+        cout<<"CAN'T"<<endl;
+    }
+    else if (q->front != 0){
+        q->front--;
+        q->arr[q->front] = val;
+    }
+    else if (q->front == 0)
+    {
+        int i = q->rear;
+        int j = i+1;
+        while (i >= 0)
+        {
+            q->arr[j] = q->arr[i];
+            j--;
+            i--;
+        }
+        q->arr[j] = val;
+    }
+}
 
 int main(int argc, char const *argv[])
 {
@@ -95,6 +117,11 @@ int main(int argc, char const *argv[])
     Queue *q = new Queue;
     q->size = 5;
     q->arr = (int *)malloc(sizeof(int) * q->size);
+    enQueueFirst(q,10);
+    enQueueFirst(q,20);
+    enQueueFirst(q,40);
+    enQueueFirst(q,50);
+
     printArray(q);
 
     return 0;
