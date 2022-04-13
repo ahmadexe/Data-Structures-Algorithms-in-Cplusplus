@@ -1,18 +1,25 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-class DEQueue{
+class DEQueue
+{
 public:
     int f = -1;
     int r = -1;
     int size = 0;
+    int *arr;
     DEQueue(int size)
     {
         this->size = size;
+        this->arr = (int *)malloc(sizeof(int) * this->size);
     }
-    int isEmpty(){
-        if (this->f == this->r - 1){
+    int isEmpty()
+    {
+        if ((this->f == this->r - 1) || (this->f == -1 && this->r == -1))
+        {
+            this->f == -1;
+            this->r == -1;
             return 1;
         }
         return 0;
@@ -25,18 +32,23 @@ public:
         }
         return 0;
     }
-};
 
-void enQueueFront(DEQueue* q)
-{
-    
-}
+    void enQueueFront(int val)
+    {
+        if (this->isEmpty())
+        {
+            this->f++;
+            this->r++;
+            this->arr[this->f] == val;
+        }
+    }
+};
 
 int main(int argc, char const *argv[])
 {
-    DEQueue* q = new DEQueue(5);
-    cout<<q->isFull()<<endl;
-    cout<<q->isEmpty()<<endl;
+    DEQueue *q = new DEQueue(5);
+    cout << q->isFull() << endl;
+    cout << q->isEmpty() << endl;
 
     return 0;
 }
