@@ -19,7 +19,7 @@ void enQueueLast(Queue *qu, int value)
     }
     else
     {
-        qu->rear = (qu->rear+1)%qu->size;
+        qu->rear = (qu->rear + 1) % qu->size;
         qu->arr[qu->rear] = value;
     }
 }
@@ -78,20 +78,20 @@ int deQueueFirst(Queue *q)
     return -1;
 }
 
-void printArray(Queue* q)
+void printArray(Queue *q)
 {
     for (int i = q->front; i <= q->rear; i++)
     {
-        cout<<q->arr[i]<<" ";
+        cout << q->arr[i] << " ";
     }
-    cout<<endl;
+    cout << endl;
 }
 
-void enQueueFirst(Queue* q, int val)
+void enQueueFirst(Queue *q, int val)
 {
     if (isFull(q))
     {
-        cout<<"CAN'T"<<endl;
+        cout << "CAN'T" << endl;
     }
     else if (isEmpty(q))
     {
@@ -99,14 +99,15 @@ void enQueueFirst(Queue* q, int val)
         q->rear++;
         q->arr[q->front] = val;
     }
-    else if (q->front != 0){
+    else if (q->front != 0)
+    {
         q->front--;
         q->arr[q->front] = val;
     }
     else if (q->front == 0)
     {
         int i = q->rear;
-        int j = i+1;
+        int j = i + 1;
         while (i >= 0)
         {
             q->arr[j] = q->arr[i];
@@ -124,13 +125,13 @@ int main(int argc, char const *argv[])
     Queue *q = new Queue;
     q->size = 5;
     q->arr = (int *)malloc(sizeof(int) * q->size);
-    enQueueFirst(q,10);
-    enQueueFirst(q,20);
-    enQueueFirst(q,40);
-    enQueueFirst(q,50);
+    enQueueFirst(q, 10);
+    enQueueFirst(q, 20);
+    enQueueFirst(q, 40);
+    enQueueFirst(q, 50);
     deQueueFirst(q);
-    enQueueFirst(q,60);
-    enQueueFirst(q,70);
+    enQueueFirst(q, 60);
+    enQueueFirst(q, 70);
 
     printArray(q);
 
