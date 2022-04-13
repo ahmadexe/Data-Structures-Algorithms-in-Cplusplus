@@ -10,6 +10,13 @@ struct Queue
     int* arr;
 };
 
+int isFull(Queue* q)
+{
+    return (q->front == 0 && q->rear == q->size - 1);
+}
+
+
+
 int main(int argc, char const *argv[])
 {
 
