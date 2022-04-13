@@ -163,13 +163,11 @@ int main(int argc, char const *argv[])
     Queue *q = new Queue;
     q->size = 5;
     q->arr = (int *)malloc(sizeof(int) * q->size);
-    enQueueFirst(q, 10);
-    enQueueFirst(q, 20);
-    enQueueFirst(q, 40);
-    enQueueFirst(q, 50);
-    deQueueFirst(q);
-    enQueueFirst(q, 60);
-    enQueueFirst(q, 70);
+    enQueueFirst(q,10);
+    enQueueFirst(q,20);
+    enQueueFirst(q,30);
+    enQueueFirst(q,40);
+    enQueueLast(q,50);
 
     printArray(q);
 
