@@ -83,6 +83,13 @@ int main(int argc, char const *argv[])
     insert(40);
     insert(60);
     Node* z = root;
-    
+    Node* a = search(z,80);
+    if (a)
+    {
+        cout<<a->data;
+    }
+    else{
+        cout<<"Node not present"<<endl;
+    }
     return 0;
 }
