@@ -7,7 +7,7 @@ public:
     int f = -1;
     int r = -1;
     int isEmpty(){
-        if (this->f == -1 && this->r == -1){
+        if (this->f == this->r){
             return 1;
         }
         return 0;
