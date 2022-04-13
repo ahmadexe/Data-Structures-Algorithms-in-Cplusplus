@@ -79,15 +79,15 @@ int main(int argc, char const *argv[])
     q->rear = -1;
     q->size = 5;
     q->arr = (int *)malloc(sizeof(int) * q->size);
-    enQueue(q, 10);
     enQueue(q, 20);
+    enQueue(q, 10);
     enQueue(q, 40);
     enQueue(q, 30);
     enQueue(q, 15);
     printArray(q);
-    deQueueMinimum(q);
-    printArray(q);
-    deQueueMaximum(q);
-    printArray(q);
+    // deQueueMinimum(q);
+    // printArray(q);
+    // deQueueMaximum(q);
+    // printArray(q);
     return 0;
 }
