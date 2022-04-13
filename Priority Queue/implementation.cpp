@@ -1,5 +1,5 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Queue
@@ -7,17 +7,17 @@ struct Queue
     int front;
     int rear;
     int size;
-    int* arr;
+    int *arr;
 };
 
-int isFull(Queue* q)
+int isFull(Queue *q)
 {
     return (q->front == 0 && q->rear == q->size - 1);
 }
 
-int isEmpty(Queue* q)
+int isEmpty(Queue *q)
 {
-    return (q->front == -1 && q->rear == - 1);
+    return (q->front == -1 && q->rear == -1);
 }
 
 int main(int argc, char const *argv[])
@@ -27,10 +27,9 @@ int main(int argc, char const *argv[])
     q->front = -1;
     q->rear = -1;
     q->size = 5;
-    q->arr = (int*)malloc(sizeof(int) * q->size);
-    cout<<isEmpty(q)<<endl;
-    cout<<isFull(q)<<endl;
-
+    q->arr = (int *)malloc(sizeof(int) * q->size);
+    cout << isEmpty(q) << endl;
+    cout << isFull(q) << endl;
 
     return 0;
 }
