@@ -61,6 +61,16 @@ void inOrder(Node* x)
     inOrder(x->right);
 }
 
+Node* inOrderPre(Node* r)
+{
+    r = r->left;
+    while (r)
+    {
+        r = r->right;
+    }
+    return r;
+}
+
 struct Node* deleteNode(Node* r,int value)
 {
     if (r == NULL)
@@ -76,13 +86,13 @@ struct Node* deleteNode(Node* r,int value)
     {
         r->left = deleteNode(r->left,value);
     }
-    else if (value > r->right)
+    else if (value > r->data)
     {
         r->right = deleteNode(r->right, value);
     }
     else
     {
-        inPre = inOrderPre(r);
+        Node* inPre = inOrderPre(r);
         
     }
 }
