@@ -93,7 +93,8 @@ struct Node* deleteNode(Node* r,int value)
     else
     {
         Node* inPre = inOrderPre(r);
-        
+        r->data = inPre->data;
+        r->left = deleteNode(r->left, inPre->data);
     }
 }
 
