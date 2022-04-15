@@ -106,11 +106,9 @@ int main(int argc, char const *argv[])
     insert(50);
     insert(70);
     insert(40);
-    insert(60);
-    Node* z = root;
-    inOrder(z);
-    cout<<endl;    
-    deleteNode(z,30);
-    inOrder(z);
+    insert(60);    
+    deleteNode(root,20);
+    inOrder(root);
+
     return 0;
 }
