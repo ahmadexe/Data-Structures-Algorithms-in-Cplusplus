@@ -63,7 +63,10 @@ void inOrder(Node* x)
 
 struct Node* deleteNode(Node* r,int value)
 {
-
+    if (r == NULL)
+    {
+        return NULL;
+    }
 }
 
 int main(int argc, char const *argv[])
