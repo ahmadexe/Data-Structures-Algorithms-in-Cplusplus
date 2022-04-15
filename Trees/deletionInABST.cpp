@@ -50,6 +50,17 @@ void insert(int data)
 }
 
 
+void inOrder(Node* x)
+{
+    if (!x)
+    {
+        return;
+    }
+    inOrder(x->left);
+    cout<<x->data<<" ";
+    inOrder(x->right);
+}
+
 int main(int argc, char const *argv[])
 {
 
