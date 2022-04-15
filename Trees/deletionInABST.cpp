@@ -108,7 +108,7 @@ int main(int argc, char const *argv[])
     insert(40);
     insert(60);    
     Node* z = root;
-    deleteNode(z,30);
+    deleteNode(z,70);
     inOrder(z);
 
     return 0;
