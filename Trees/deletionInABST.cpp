@@ -67,6 +67,12 @@ struct Node* deleteNode(Node* r,int value)
     {
         return NULL;
     }
+    if (r->left == NULL && r->right == NULL)
+    {
+        free(r);
+        return NULL;
+    }
+    
 }
 
 int main(int argc, char const *argv[])
