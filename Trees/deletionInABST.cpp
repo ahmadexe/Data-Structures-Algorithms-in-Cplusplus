@@ -1,5 +1,5 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Node
@@ -9,7 +9,7 @@ struct Node
     Node *left;
 };
 
-Node* root = NULL;
+Node *root = NULL;
 
 void insert(int data)
 {
@@ -25,7 +25,7 @@ void insert(int data)
     {
         Node *p = new Node;
         p = root;
-        Node* temp = new Node;
+        Node *temp = new Node;
         while (p != NULL)
         {
             if (p->data < data)
@@ -40,28 +40,29 @@ void insert(int data)
             }
         }
         p = cur;
-        if (p->data > temp->data){
+        if (p->data > temp->data)
+        {
             temp->right = p;
         }
-        else {
+        else
+        {
             temp->left = p;
         }
     }
 }
 
-
-void inOrder(Node* x)
+void inOrder(Node *x)
 {
     if (!x)
     {
         return;
     }
     inOrder(x->left);
-    cout<<x->data<<" ";
+    cout << x->data << " ";
     inOrder(x->right);
 }
 
-Node* inOrderPre(Node* r)
+Node *inOrderPre(Node *r)
 {
     r = r->left;
     while (r->right)
@@ -71,7 +72,7 @@ Node* inOrderPre(Node* r)
     return r;
 }
 
-struct Node* deleteNode(Node* r,int value)
+struct Node *deleteNode(Node *r, int value)
 {
     if (r == NULL)
     {
@@ -84,7 +85,7 @@ struct Node* deleteNode(Node* r,int value)
     }
     if (value < r->data)
     {
-        r->left = deleteNode(r->left,value);
+        r->left = deleteNode(r->left, value);
     }
     else if (value > r->data)
     {
@@ -92,7 +93,7 @@ struct Node* deleteNode(Node* r,int value)
     }
     else
     {
-        Node* inPre = inOrderPre(r);
+        Node *inPre = inOrderPre(r);
         r->data = inPre->data;
         r->left = deleteNode(r->left, inPre->data);
     }
@@ -106,9 +107,9 @@ int main(int argc, char const *argv[])
     insert(50);
     insert(70);
     insert(40);
-    insert(60);    
-    Node* z = root;
-    deleteNode(z,70);
+    insert(60);
+    Node *z = root;
+    deleteNode(z, 70);
     inOrder(z);
 
     return 0;
