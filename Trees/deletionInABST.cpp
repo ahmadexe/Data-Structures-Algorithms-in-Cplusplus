@@ -61,7 +61,10 @@ void inOrder(Node* x)
     inOrder(x->right);
 }
 
+struct Node* deleteNode(Node* r,int value)
+{
 
+}
 
 int main(int argc, char const *argv[])
 {
