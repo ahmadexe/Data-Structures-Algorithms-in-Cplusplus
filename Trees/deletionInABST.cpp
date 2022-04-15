@@ -72,7 +72,19 @@ struct Node* deleteNode(Node* r,int value)
         free(r);
         return NULL;
     }
-    
+    if (value < r->data)
+    {
+        r->left = deleteNode(r->left,value);
+    }
+    else if (value > r->right)
+    {
+        r->right = deleteNode(r->right, value);
+    }
+    else
+    {
+        inPre = inOrderPre();
+        
+    }
 }
 
 int main(int argc, char const *argv[])
