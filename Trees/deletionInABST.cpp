@@ -96,11 +96,11 @@ struct Node* deleteNode(Node* r,int value)
         r->data = inPre->data;
         r->left = deleteNode(r->left, inPre->data);
     }
+    return r;
 }
 
 int main(int argc, char const *argv[])
 {
-
     insert(30);
     insert(20);
     insert(50);
@@ -108,8 +108,9 @@ int main(int argc, char const *argv[])
     insert(40);
     insert(60);
     Node* z = root;
-    inOrder(z);    
-
-
+    inOrder(z);
+    cout<<endl;    
+    deleteNode(z,30);
+    inOrder(z);
     return 0;
 }
