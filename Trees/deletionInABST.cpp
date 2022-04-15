@@ -64,7 +64,7 @@ void inOrder(Node* x)
 Node* inOrderPre(Node* r)
 {
     r = r->left;
-    while (r)
+    while (r->right)
     {
         r = r->right;
     }
@@ -107,7 +107,9 @@ int main(int argc, char const *argv[])
     insert(70);
     insert(40);
     insert(60);    
-    
+    Node* z = root;
+    deleteNode(z,30);
+    inOrder(z);
 
     return 0;
 }
