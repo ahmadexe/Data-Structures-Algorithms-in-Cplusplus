@@ -82,7 +82,7 @@ struct Node* deleteNode(Node* r,int value)
     }
     else
     {
-        inPre = inOrderPre();
+        inPre = inOrderPre(r);
         
     }
 }
