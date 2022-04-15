@@ -64,7 +64,14 @@ void inOrder(Node* x)
 int main(int argc, char const *argv[])
 {
 
-    
+    insert(30);
+    insert(20);
+    insert(50);
+    insert(70);
+    insert(40);
+    insert(60);
+    Node* z = root;
+    inOrder(z);    
 
 
     return 0;
