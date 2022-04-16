@@ -58,7 +58,14 @@ int maxVal(Node* r)
     return max(r->data, max(maxVal(r->left),maxVal(r->right)));
 }
 
-
+int minVal(Node* r)
+{
+    if (r == NULL)
+    {
+        return INT_MAX;
+    }
+    return min(r->data, min(minVal(r->left), minVal(r->right)));
+}
 
 int main(int argc, char const *argv[])
 {
@@ -69,6 +76,7 @@ int main(int argc, char const *argv[])
     insert(4);
     insert(5);
     cout<<maxVal(root)<<endl;
+    cout<<minVal(root);
 
 
     return 0;
