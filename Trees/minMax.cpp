@@ -55,7 +55,7 @@ int maxVal(Node* r)
     {
         return INT_MIN;
     }
-    return min(r->data, min(maxVal(r->left),maxVal(r->right)));
+    return max(r->data, max(maxVal(r->left),maxVal(r->right)));
 }
 
 
