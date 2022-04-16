@@ -49,14 +49,29 @@ void insert(int data)
         }
     }
 }
-
-
+int sizeGlobal = 0;
+int findSize(Node* r)
+{
+    if (!r)
+    {
+        return 0;
+    }
+    else
+    {
+        sizeGlobal++;
+        findSize(r->left);
+        findSize(r->right);
+    }
+    return sizeGlobal;
+}
 
 int main(int argc, char const *argv[])
-{
-
-    
-
-
+{    
+    insert(1);
+    insert(2);
+    insert(3);
+    insert(4);
+    insert(5);
+    cout<<findSize(root);
     return 0;
 }
