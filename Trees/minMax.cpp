@@ -1,5 +1,5 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Node
@@ -9,7 +9,7 @@ struct Node
     Node *left;
 };
 
-Node* root = NULL;
+Node *root = NULL;
 
 void insert(int data)
 {
@@ -25,7 +25,7 @@ void insert(int data)
     {
         Node *p = new Node;
         p = root;
-        Node* temp = new Node;
+        Node *temp = new Node;
         while (p != NULL)
         {
             if (p->data < data)
@@ -40,25 +40,27 @@ void insert(int data)
             }
         }
         p = cur;
-        if (p->data > temp->data){
+        if (p->data > temp->data)
+        {
             temp->right = p;
         }
-        else {
+        else
+        {
             temp->left = p;
         }
     }
 }
 
-int maxVal(Node* r)
+int maxVal(Node *r)
 {
     if (r == NULL)
     {
         return INT_MIN;
     }
-    return max(r->data, max(maxVal(r->left),maxVal(r->right)));
+    return max(r->data, max(maxVal(r->left), maxVal(r->right)));
 }
 
-int minVal(Node* r)
+int minVal(Node *r)
 {
     if (r == NULL)
     {
@@ -69,15 +71,12 @@ int minVal(Node* r)
 
 int main(int argc, char const *argv[])
 {
-
     insert(1);
     insert(2);
     insert(3);
     insert(4);
     insert(5);
-    cout<<maxVal(root)<<endl;
-    cout<<minVal(root);
-
-
+    cout << maxVal(root) << endl;
+    cout << minVal(root);
     return 0;
 }
