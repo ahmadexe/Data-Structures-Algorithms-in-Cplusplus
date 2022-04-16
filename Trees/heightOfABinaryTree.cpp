@@ -50,10 +50,24 @@ void insert(int data)
     }
 }
 
+int height(Node* r)
+{
+    if (!r)
+    {
+        return 0;
+    }
+    return max(height(r->left), height(r->right)) + 1;
+}
+
 int main(int argc, char const *argv[])
 {
 
-    
+    insert(1);
+    insert(2);
+    insert(3);
+    insert(4);
+    insert(5);
+    cout<<height(root);
 
 
     return 0;
