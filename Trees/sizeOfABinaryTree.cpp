@@ -1,5 +1,5 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Node
@@ -9,8 +9,7 @@ struct Node
     Node *left;
 };
 
-Node* root = NULL;
-
+Node *root = NULL;
 
 void insert(int data)
 {
@@ -26,7 +25,7 @@ void insert(int data)
     {
         Node *p = new Node;
         p = root;
-        Node* temp = new Node;
+        Node *temp = new Node;
         while (p != NULL)
         {
             if (p->data < data)
@@ -41,16 +40,18 @@ void insert(int data)
             }
         }
         p = cur;
-        if (p->data > temp->data){
+        if (p->data > temp->data)
+        {
             temp->right = p;
         }
-        else {
+        else
+        {
             temp->left = p;
         }
     }
 }
 int sizeGlobal = 0;
-int findSize(Node* r)
+int findSize(Node *r)
 {
     if (!r)
     {
@@ -65,7 +66,7 @@ int findSize(Node* r)
     return sizeGlobal;
 }
 
-int findSize2(Node* r)
+int findSize2(Node *r)
 {
     if (!r)
     {
@@ -75,12 +76,12 @@ int findSize2(Node* r)
 }
 
 int main(int argc, char const *argv[])
-{    
+{
     insert(1);
     insert(2);
     insert(3);
     insert(4);
     insert(5);
-    cout<<findSize2(root);
+    cout << findSize2(root);
     return 0;
 }
