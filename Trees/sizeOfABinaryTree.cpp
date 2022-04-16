@@ -65,6 +65,15 @@ int findSize(Node* r)
     return sizeGlobal;
 }
 
+int findSize2(Node* r)
+{
+    if (!r)
+    {
+        return 0;
+    }
+    return findSize2(r->left) + findSize2(r->right) + 1;
+}
+
 int main(int argc, char const *argv[])
 {    
     insert(1);
@@ -72,6 +81,6 @@ int main(int argc, char const *argv[])
     insert(3);
     insert(4);
     insert(5);
-    cout<<findSize(root);
+    cout<<findSize2(root);
     return 0;
 }
