@@ -1,53 +1,63 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-struct Stack{
+struct Stack
+{
     int top;
     int size;
-    int* arr;
+    int *arr;
 };
 
-int isEmpty(Stack* s){
+int isEmpty(Stack *s)
+{
     return (s->top == -1);
 }
 
-int isFull(Stack* s) {
-    return (s->top == s->size-1);
+int isFull(Stack *s)
+{
+    return (s->top == s->size - 1);
 }
 
-void push(Stack* s, int val) {
-    if (!isFull(s)) {
+void push(Stack *s, int val)
+{
+    if (!isFull(s))
+    {
         s->arr[++s->top] = val;
     }
-    else {
-        cout<<"Stack overflow!"<<endl;
+    else
+    {
+        cout << "Stack overflow!" << endl;
     }
 }
 
-int top(Stack* s){
-    if (isEmpty(s)) {
-        cout<<"Stack underflow"<<endl;
+int top(Stack *s)
+{
+    if (isEmpty(s))
+    {
+        cout << "Stack underflow" << endl;
         return -1;
     }
-    else {
+    else
+    {
         return s->arr[s->top];
     }
 }
 
-void pop(Stack* s) {
-    if (!isEmpty(s)) {
+void pop(Stack *s)
+{
+    if (!isEmpty(s))
+    {
         s->top--;
-    } else{
-    cout<<"Can't pop Stack underflow"<<endl;
-}
+    }
+    else
+    {
+        cout << "Can't pop Stack underflow" << endl;
+    }
 }
 
 int main(int argc, char const *argv[])
 {
-
-    
-
 
     return 0;
 }
