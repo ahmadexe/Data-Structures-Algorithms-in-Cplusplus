@@ -16,6 +16,25 @@ int isFull(Stack* s) {
     return (s->top == s->size-1);
 }
 
+void push(Stack* s, int val) {
+    if (!isFull(s)) {
+        s->arr[++s->top] = val;
+    }
+    else {
+        cout<<"Stack overflow!"<<endl;
+    }
+}
+
+int top(Stack* s){
+    if (isEmpty(s)) {
+        return -1;
+    }
+    else {
+        return s->arr[s->top--];
+    }
+}
+
+
 
 int main(int argc, char const *argv[])
 {
