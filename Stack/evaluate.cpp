@@ -110,6 +110,6 @@ int evaluate(string eq)
 
 int main(int argc, char const *argv[])
 {
-    cout<<evaluate("46+2/5*7+");
+    cout<<evaluate("231*+9-");
     return 0;
 }
