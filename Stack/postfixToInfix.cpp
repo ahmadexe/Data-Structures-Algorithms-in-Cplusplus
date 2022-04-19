@@ -30,7 +30,7 @@ int top(Stack* s){
         return -1;
     }
     else {
-        return s->arr[s->top--];
+        return s->arr[s->top];
     }
 }
 
