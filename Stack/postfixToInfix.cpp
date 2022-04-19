@@ -38,8 +38,9 @@ int top(Stack* s){
 void pop(Stack* s) {
     if (!isEmpty(s)) {
         s->top--;
-    }
+    } else{
     cout<<"Can't pop Stack underflow"<<endl;
+}
 }
 
 int main(int argc, char const *argv[])
