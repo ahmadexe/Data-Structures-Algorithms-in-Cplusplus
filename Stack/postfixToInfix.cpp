@@ -27,6 +27,7 @@ void push(Stack* s, int val) {
 
 int top(Stack* s){
     if (isEmpty(s)) {
+        cout<<"Stack underflow"<<endl;
         return -1;
     }
     else {
@@ -34,7 +35,12 @@ int top(Stack* s){
     }
 }
 
-
+void pop(Stack* s) {
+    if (!isEmpty(s)) {
+        s->top--;
+    }
+    cout<<"Can't pop Stack underflow"<<endl;
+}
 
 int main(int argc, char const *argv[])
 {
