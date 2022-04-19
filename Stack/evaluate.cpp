@@ -74,28 +74,28 @@ int evaluate(string eq)
         {
             int a = s->pop();
             int b = s->pop();
-            int c = a + b;
+            int c = b + a;
             s->push(c);
         }
         else if (eq[i] == '-')
         {
             int a = s->pop();
             int b = s->pop();
-            int c = a - b;
+            int c = b - a;
             s->push(c);
         }
         else if (eq[i] == '*')
         {
-           int a = s->pop();
+            int a = s->pop();
             int b = s->pop();
-            int c = a * b;
+            int c = b * a;
             s->push(c);
         }
         else if (eq[i] == '/')
         {
             int a = s->pop();
             int b = s->pop();
-            int c = a / b;
+            int c = b / a;
             s->push(c);
         }
         else
@@ -110,6 +110,6 @@ int evaluate(string eq)
 
 int main(int argc, char const *argv[])
 {
-    cout<<evaluate("6523+8*+3+*");
+    cout<<evaluate("231*9-");
     return 0;
 }
