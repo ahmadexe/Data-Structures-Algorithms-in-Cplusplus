@@ -6,7 +6,7 @@ struct Stack
 {
     int top;
     int size;
-    int *arr;
+    string *arr;
 };
 
 int isEmpty(Stack *s)
@@ -19,7 +19,7 @@ int isFull(Stack *s)
     return (s->top == s->size - 1);
 }
 
-void push(Stack *s, int val)
+void push(Stack *s, string val)
 {
     if (!isFull(s))
     {
@@ -31,28 +31,42 @@ void push(Stack *s, int val)
     }
 }
 
-int top(Stack *s)
-{
-    if (isEmpty(s))
+
+
+string convertToInfix(Stack* s,string postfix) {
+    int i = 0;
+    while (i < postfix.size())
     {
-        cout << "Stack underflow" << endl;
-        return -1;
+        if ((postfix[i] >= 'a' && postfix[i] <= 'z') || (postfix[i] >= 'A' && postfix[i] <= 'Z'))
+        {   
+            string toPush = "";
+            toPush += postfix[i];
+            push(s, toPush);
+        }
+        else {
+            string exp = "";
+            string a = pop(s);
+            
+            string b = pop(s);
+            
+            exp = "("+b+postfix[i]+a+")";
+            push(s,exp);
+        }
+        i++;
     }
-    else
-    {
-        return s->arr[s->top];
-    }
+    return pop(s);
 }
 
-void pop(Stack *s)
+string pop(Stack *s)
 {
     if (!isEmpty(s))
     {
-        s->top--;
+       return s->arr[s->top--];
     }
     else
     {
         cout << "Can't pop Stack underflow" << endl;
+        return "-1";
     }
 }
 
