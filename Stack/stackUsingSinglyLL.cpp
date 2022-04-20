@@ -13,6 +13,21 @@ Node* tail = NULL;
 
 void insert(char val)
 {
+    Node* c = new Node;
+    c->data = val;
+    c->next = NULL;
+    if (!head && !tail) {
+        head = c;
+        tail = c;
+    }
+    else
+    {
+        tail->next = c;
+        tail = c;
+    }   
+}
+
+int checkPalindrome(string str) {
     
 }
 
