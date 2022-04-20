@@ -27,8 +27,11 @@ void insert(char val)
     }   
 }
 
-int checkPalindrome(string str) {
-    
+int checkPalindrome(string str, Node* p) {
+    if (!p) 
+    {
+        
+    }
 }
 
 int main(int argc, char const *argv[])
