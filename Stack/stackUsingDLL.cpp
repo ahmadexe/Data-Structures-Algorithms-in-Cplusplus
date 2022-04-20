@@ -3,7 +3,7 @@
 using namespace std;
 
 struct Node{
-    int data;
+    char data;
     Node* next;
     Node* prev;
 };
@@ -11,7 +11,7 @@ struct Node{
 Node* head = NULL;
 Node* tail = NULL;
 
-void insert(int value) 
+void insert(char value) 
 {
     Node* curr = new Node;
     curr->data = value;
@@ -27,6 +27,11 @@ void insert(int value)
         tail->next = curr;
         tail = curr;
     }
+}
+
+void checkPalindrome()
+{
+    
 }
 
 int main(int argc, char const *argv[])
