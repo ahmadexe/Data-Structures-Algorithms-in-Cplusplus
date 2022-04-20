@@ -8,7 +8,13 @@ struct Node{
     Node* prev;
 };
 
+Node* head = NULL;
+Node* tail = NULL;
 
+void insert(int value) 
+{
+    
+}
 
 int main(int argc, char const *argv[])
 {
