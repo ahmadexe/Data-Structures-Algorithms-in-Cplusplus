@@ -29,15 +29,27 @@ void insert(char value)
     }
 }
 
-void checkPalindrome()
+int checkPalindrome(string str)
 {
-    
+    for (int i = 0; i < str.size(); i++){
+        insert(str[i]);
+    }
+    Node* rev = tail;
+    int i = 0;
+    while (rev) {
+        if (rev->data != str[i]){
+            return 0;
+        }
+        i++;
+        rev = rev->prev;
+    }
+    return 1;
 }
 
 int main(int argc, char const *argv[])
 {
 
-    
+    cout<<checkPalindrome("civi");
 
 
     return 0;
