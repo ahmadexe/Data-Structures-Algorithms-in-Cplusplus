@@ -129,6 +129,11 @@ int main(int argc, char const *argv[])
                 }
             }
         }
+        else if (choiceMain == 3)
+        {
+            break;
+        }
+
         else
         {
             cout << "Invalid Choice" << endl;
