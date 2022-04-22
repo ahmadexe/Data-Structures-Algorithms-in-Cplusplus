@@ -98,10 +98,40 @@ int deliverFromRear(Queue* q)
     }
 }
 
+void takeOrderAtFront(Queue * q, int val)
+{
+    if (isFull(q))
+    {
+        cout<<"Not accepting more orders"<<endl;
+    }
+    else
+    {
+
+        if (q->f == -1 && q->r == -1)
+        {
+            q->f = 0;
+            q->r = 0;
+            q->arr[q->f] = val;
+        }
+        else if (q->f == 0)
+        {
+            q->f = q->size - 1;
+            q->arr[q->f] = val;
+        }
+        else
+        {
+            q->arr[--q->f] = val;
+        }
+    }
+}
+
 int main(int argc, char const *argv[])
 {
+    
 
     
+    
+
 
 
     return 0;
