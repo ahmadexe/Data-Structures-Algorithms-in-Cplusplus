@@ -78,8 +78,14 @@ int main(int argc, char const *argv[])
     while (1)
     {
         int choiceMain;
-        cout<<"Enter as customer\n"<<"2. Login as admin"<<endl<<"3. Exit"<<endl;
+        cout<<"1. Enter as customer\n"<<"2. Login as admin"<<endl<<"3. Exit"<<endl;
         cin>>choiceMain;
+        if (choiceMain == 1)
+        {
+            int choiceC;
+            cout<<"1. Place order"<<endl<<"2. Exit"<<endl;
+            cin>>choiceC;
+        }
     }
     
 
