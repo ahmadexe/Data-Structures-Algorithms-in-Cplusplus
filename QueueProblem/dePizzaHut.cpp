@@ -150,17 +150,25 @@ int main(int argc, char const *argv[])
             while (1)
             {
                 int choiceC;
-                cout << "1. Place order" << endl
-                     << "2. Exit" << endl;
+                cout << "1. Place order Regukar" << endl
+                     << "2. Place order using VIP Card" <<endl   
+                     << "3. Exit" << endl;
                 cin >> choiceC;
                 if (choiceC == 1)
                 {
                     int order;
                     cout << "Enter order id" << endl;
                     cin>>order;
-                    takeOrder(q, order);
+                    takeOrderAtRear(q, order);
                 }
                 else if (choiceC == 2)
+                {
+                    int order;
+                    cout << "Enter order id" << endl;
+                    cin>>order;
+                    takeOrderAtFront(q, order);
+                }
+                else if (choiceC == 3)
                 {
                     break;
                 }
@@ -176,14 +184,19 @@ int main(int argc, char const *argv[])
             while (1)
             {
                 int choiceC;
-                cout << "1. Deliver" << endl
-                     << "2. Exit" << endl;
+                cout << "1. Deliver Regular" << endl
+                     << "2. Deliver VIP customer" << endl
+                     << "3. Exit" << endl;
                 cin >> choiceC;
                 if (choiceC == 1)
                 {
-                    cout << deliver(q) << endl;
+                    cout << deliverFromRear(q) << endl;
                 }
                 else if (choiceC == 2)
+                {
+                    cout << deliverFromFront(q) << endl;
+                }
+                else if (choiceC == 3)
                 {
                     break;
                 }
