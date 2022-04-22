@@ -70,25 +70,18 @@ int main(int argc, char const *argv[])
     Queue* q = new Queue;
     q->f = -1;
     q->r = -1;
-    q->size = 5;
+    int M;
+    cout<<"Enter total number of accepted orders"<<endl;
+    q->size = M;
     q->arr = (int *)malloc(sizeof(int) * q->size);
 
-    takeOrder(q,10);
-    takeOrder(q,20);
-    takeOrder(q,30);
-    cout<<deliver(q)<<endl;
-    cout<<deliver(q)<<endl;
-    takeOrder(q,40);
-    takeOrder(q,50);
-    takeOrder(q,60);
-    takeOrder(q,70);
-
-    cout<<deliver(q)<<endl;
-    cout<<deliver(q)<<endl;
-    cout<<deliver(q)<<endl;
-    cout<<deliver(q)<<endl;
-    cout<<deliver(q)<<endl;
-    cout<<deliver(q)<<endl;
+    while (1)
+    {
+        int choiceMain;
+        cout<<"Enter as customer\n"<<"2. Login as admin"<<endl<<"3. Exit"<<endl;
+        cin>>choiceMain;
+    }
+    
 
 
 
