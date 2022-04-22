@@ -66,6 +66,7 @@ int deliver(Queue *q)
 
 int main(int argc, char const *argv[])
 {
+    
     Queue *q = new Queue;
     q->f = -1;
     q->r = -1;

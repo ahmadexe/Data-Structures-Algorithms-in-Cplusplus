@@ -129,10 +129,80 @@ int main(int argc, char const *argv[])
 {
     
 
-    
-    
+    Queue *q = new Queue;
+    q->f = -1;
+    q->r = -1;
+    int M;
+    cout << "Enter total number of accepted orders" << endl;
+    cin>>M;
+    q->size = M;
+    q->arr = (int *)malloc(sizeof(int) * q->size);
 
+    while (1)
+    {
+        int choiceMain;
+        cout << "1. Enter as customer\n"
+             << "2. Login as admin" << endl
+             << "3. Exit" << endl;
+        cin >> choiceMain;
+        if (choiceMain == 1)
+        {
+            while (1)
+            {
+                int choiceC;
+                cout << "1. Place order" << endl
+                     << "2. Exit" << endl;
+                cin >> choiceC;
+                if (choiceC == 1)
+                {
+                    int order;
+                    cout << "Enter order id" << endl;
+                    cin>>order;
+                    takeOrder(q, order);
+                }
+                else if (choiceC == 2)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid Choice" << endl;
+                }
+            }
+        }
 
+        else if (choiceMain == 2)
+        {
+            while (1)
+            {
+                int choiceC;
+                cout << "1. Deliver" << endl
+                     << "2. Exit" << endl;
+                cin >> choiceC;
+                if (choiceC == 1)
+                {
+                    cout << deliver(q) << endl;
+                }
+                else if (choiceC == 2)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid Choice" << endl;
+                }
+            }
+        }
+        else if (choiceMain == 3)
+        {
+            break;
+        }
+
+        else
+        {
+            cout << "Invalid Choice" << endl;
+        }
+    }
 
     return 0;
 }
