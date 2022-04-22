@@ -1,5 +1,5 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Queue
@@ -10,21 +10,21 @@ struct Queue
     string *arr;
 };
 
-int isEmpty(Queue* q)
+int isEmpty(Queue *q)
 {
     return (q->f == -1 && q->r == -1);
 }
 
-int isFull(Queue * q)
+int isFull(Queue *q)
 {
     return ((q->r + 1) % q->size == q->f);
 }
 
-void takeOrder(Queue* q, string oid)
+void takeOrder(Queue *q, string oid)
 {
     if (isFull(q))
     {
-        cout<<"Sorry! Can't accept more orders."<<endl;
+        cout << "Sorry! Can't accept more orders." << endl;
     }
     else if (isEmpty(q))
     {
@@ -39,12 +39,11 @@ void takeOrder(Queue* q, string oid)
     }
 }
 
-string deliver(Queue* q)
+string deliver(Queue *q)
 {
     if (isEmpty(q))
     {
         return "No pending orders";
-        
     }
     else
     {
@@ -67,78 +66,74 @@ string deliver(Queue* q)
 
 int main(int argc, char const *argv[])
 {
-    Queue* q = new Queue;
+    Queue *q = new Queue;
     q->f = -1;
     q->r = -1;
     int M;
-    cout<<"Enter total number of accepted orders"<<endl;
+    cout << "Enter total number of accepted orders" << endl;
     q->size = M;
     q->arr = (string *)malloc(sizeof(int) * q->size);
 
     while (1)
     {
         int choiceMain;
-        cout<<"1. Enter as customer\n"<<"2. Login as admin"<<endl<<"3. Exit"<<endl;
-        cin>>choiceMain;
+        cout << "1. Enter as customer\n"
+             << "2. Login as admin" << endl
+             << "3. Exit" << endl;
+        cin >> choiceMain;
         if (choiceMain == 1)
         {
             while (1)
             {
-            int choiceC;
-            cout<<"1. Place order"<<endl<<"2. Exit"<<endl;
-            cin>>choiceC;
-            if (choiceC == 1)
-            {
-                string order;
-                cout<<"Enter order "<<endl;
-                getline(cin, order);
-                takeOrder(q, order);
-            }
-            else if (choiceC == 2)
-            {
-                break;
-            }
-            else
-            {
-                cout<<"Invalid Choice"<<endl;
-            }
+                int choiceC;
+                cout << "1. Place order" << endl
+                     << "2. Exit" << endl;
+                cin >> choiceC;
+                if (choiceC == 1)
+                {
+                    string order;
+                    cout << "Enter order " << endl;
+                    getline(cin, order);
+                    takeOrder(q, order);
+                }
+                else if (choiceC == 2)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid Choice" << endl;
+                }
             }
         }
 
-
-
-
-
         else if (choiceMain == 2)
-        {   
+        {
             while (1)
             {
-            int choiceC;
-            cout<<"1. Deliver"<<endl<<"2. Exit"<<endl;
-            cin>>choiceC;
-            if (choiceC == 1)
-            {
-                cout<<deliver(q)<<endl;
-            }
-            else if (choiceC == 2)
-            {
-                break;
-            }
-            else
-            {
-                cout<<"Invalid Choice"<<endl;
-            }
+                int choiceC;
+                cout << "1. Deliver" << endl
+                     << "2. Exit" << endl;
+                cin >> choiceC;
+                if (choiceC == 1)
+                {
+                    cout << deliver(q) << endl;
+                }
+                else if (choiceC == 2)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid Choice" << endl;
+                }
             }
         }
         else
         {
-            cout<<"Invalid Choice"<<endl;
+            cout << "Invalid Choice" << endl;
         }
     }
-    
-
-
-
 
     return 0;
 }
