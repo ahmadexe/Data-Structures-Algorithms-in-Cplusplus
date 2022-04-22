@@ -10,6 +10,11 @@ struct Queue
     int *arr;
 };
 
+int isEmpty(Queue* q)
+{
+    return (q->f == -1 && q->r == -1);
+}
+
 
 
 int main(int argc, char const *argv[])
