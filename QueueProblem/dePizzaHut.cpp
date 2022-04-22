@@ -82,7 +82,18 @@ int deliverFromRear(Queue* q)
         }
         else
         {
-
+            if (q->r == 0)
+            {
+                int id = q->arr[q->r];
+                q->r = q->size -1;
+                return id;
+            }
+            else
+            {
+                int id = q->arr[q->r];
+                q->r = q->r - 1;
+                return id;
+            }
         }
     }
 }
