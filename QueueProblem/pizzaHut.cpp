@@ -87,8 +87,23 @@ int main(int argc, char const *argv[])
             cin>>choiceC;
             if (choiceC == 1)
             {
-
+                string order;
+                cout<<"Enter order "<<endl;
+                getline(cin, order);
+                takeOrder(q, order);
             }
+            else if (choiceC == 2)
+            {
+                break;
+            }
+            else
+            {
+                cout<<"Invalid Choice"<<endl;
+            }
+        }
+        else if (choiceMain == 2)
+        {
+            
         }
     }
     
