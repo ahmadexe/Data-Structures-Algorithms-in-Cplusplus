@@ -20,7 +20,7 @@ int isFull(Queue *q)
     return ((q->r + 1) % q->size == q->f);
 }
 
-void takeOrder(Queue *q, int oid)
+void takeOrderAtRear(Queue *q, int oid)
 {
     if (isFull(q))
     {
@@ -39,7 +39,7 @@ void takeOrder(Queue *q, int oid)
     }
 }
 
-int deliver(Queue *q)
+int deliverFromFront(Queue *q)
 {
     if (isEmpty(q))
     {
