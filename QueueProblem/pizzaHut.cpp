@@ -82,6 +82,8 @@ int main(int argc, char const *argv[])
         cin>>choiceMain;
         if (choiceMain == 1)
         {
+            while (1)
+            {
             int choiceC;
             cout<<"1. Place order"<<endl<<"2. Exit"<<endl;
             cin>>choiceC;
@@ -100,10 +102,37 @@ int main(int argc, char const *argv[])
             {
                 cout<<"Invalid Choice"<<endl;
             }
+            }
         }
+
+
+
+
+
         else if (choiceMain == 2)
+        {   
+            while (1)
+            {
+            int choiceC;
+            cout<<"1. Deliver"<<endl<<"2. Exit"<<endl;
+            cin>>choiceC;
+            if (choiceC == 1)
+            {
+                cout<<deliver(q)<<endl;
+            }
+            else if (choiceC == 2)
+            {
+                break;
+            }
+            else
+            {
+                cout<<"Invalid Choice"<<endl;
+            }
+            }
+        }
+        else
         {
-            
+            cout<<"Invalid Choice"<<endl;
         }
     }
     
