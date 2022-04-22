@@ -57,7 +57,6 @@ int deliver(Queue *q)
         else
         {
             int id = q->arr[q->f];
-            q->f = (q->f + 1) % q->size;
             q->f = -1;
             q->r = -1;
             return id;

@@ -57,7 +57,6 @@ int deliverFromFront(Queue *q)
         else
         {
             int id = q->arr[q->f];
-            q->f = (q->f + 1) % q->size;
             q->f = -1;
             q->r = -1;
             return id;
@@ -65,6 +64,28 @@ int deliverFromFront(Queue *q)
     }
 }
 
+int deliverFromRear(Queue* q)
+{
+    if (isEmpty(q))
+    {
+        cout<<"No pending orders"<<endl;
+        return -1;
+    }
+    else
+    {
+        if (q->f == q->r)
+        {
+            int id = q->arr[q->r];
+            q->f = -1;
+            q->r = -1;
+            return id;
+        }
+        else
+        {
+
+        }
+    }
+}
 
 int main(int argc, char const *argv[])
 {
