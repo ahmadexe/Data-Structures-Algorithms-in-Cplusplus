@@ -7,7 +7,7 @@ struct Queue
     int f = -1;
     int r = -1;
     int size;
-    int *arr;
+    string *arr;
 };
 
 int isEmpty(Queue* q)
@@ -20,7 +20,7 @@ int isFull(Queue * q)
     return ((q->r + 1) % q->size == q->f);
 }
 
-void takeOrder(Queue* q, int oid)
+void takeOrder(Queue* q, string oid)
 {
     if (isFull(q))
     {
@@ -39,24 +39,24 @@ void takeOrder(Queue* q, int oid)
     }
 }
 
-int deliver(Queue* q)
+string deliver(Queue* q)
 {
     if (isEmpty(q))
     {
-        cout<<"No pending orders"<<endl;
-        return -1;
+        return "No pending orders";
+        
     }
     else
     {
         if (q->f != q->r)
         {
-            int id = q->arr[q->f];
+            string id = q->arr[q->f];
             q->f = (q->f + 1) % q->size;
             return id;
         }
         else
         {
-            int id = q->arr[q->f];
+            string id = q->arr[q->f];
             q->f = (q->f + 1) % q->size;
             q->f = -1;
             q->r = -1;
@@ -73,7 +73,7 @@ int main(int argc, char const *argv[])
     int M;
     cout<<"Enter total number of accepted orders"<<endl;
     q->size = M;
-    q->arr = (int *)malloc(sizeof(int) * q->size);
+    q->arr = (string *)malloc(sizeof(int) * q->size);
 
     while (1)
     {
@@ -87,7 +87,7 @@ int main(int argc, char const *argv[])
             cin>>choiceC;
             if (choiceC == 1)
             {
-                
+
             }
         }
     }
