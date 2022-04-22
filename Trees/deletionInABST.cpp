@@ -64,12 +64,15 @@ void inOrder(Node *x)
 
 Node *inOrderPre(Node *r)
 {
+    if (r->left != NULL){
     r = r->left;
     while (r->right)
     {
         r = r->right;
     }
     return r;
+    }
+    
 }
 
 struct Node *deleteNode(Node *r, int value)
