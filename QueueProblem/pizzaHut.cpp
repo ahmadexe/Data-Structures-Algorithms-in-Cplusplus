@@ -85,6 +85,10 @@ int main(int argc, char const *argv[])
             int choiceC;
             cout<<"1. Place order"<<endl<<"2. Exit"<<endl;
             cin>>choiceC;
+            if (choiceC == 1)
+            {
+                
+            }
         }
     }
     
