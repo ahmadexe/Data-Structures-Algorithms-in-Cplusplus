@@ -20,7 +20,7 @@ int isFull(Queue * q)
     return ((q->r + 1) % q->size == q->f);
 }
 
-void enQueue(Queue* q, int oid)
+void takeOrder(Queue* q, int oid)
 {
     if (isFull(q))
     {
@@ -36,6 +36,30 @@ void enQueue(Queue* q, int oid)
     {
         q->r += (q->r + 1) % q->size;
         q->arr[q->r] = oid;
+    }
+}
+
+int deliver(Queue* q)
+{
+    if (isEmpty(q))
+    {
+        cout<<"No pending orders"<<endl;
+        return -1;
+    }
+    else
+    {
+        int id = q->arr[q->f];
+            q->f = (q->f + 1) % q->size;
+        if (q->f != q->r)
+        {
+            return id;
+        }
+        else
+        {
+            q->f = -1;
+            q->r = -1;
+            return id;
+        }
     }
 }
 
