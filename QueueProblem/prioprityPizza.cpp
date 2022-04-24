@@ -31,6 +31,11 @@ void enQueue(Queue *q, int value, string ord, vector<string> &order)
         q->arr[q->front] = value;
         order[q->front] = ord;
     }
+    if (isFull(q))
+    {
+        cout<<"No more orders accepeted"<<endl;
+        return;
+    }
     else
     {
         int i = q->rear;
@@ -67,9 +72,7 @@ void enQueue(Queue *q, int value, string ord, vector<string> &order)
         }
 
         q->arr[j] = value;
-
         order[j] = ord;
-
         q->rear = (q->rear + 1) % q->size;
 
     }
@@ -79,11 +82,26 @@ void deQueueMax(Queue *q, vector<string> order)
 {
     if (isEmpty(q))
     {
-        // return -1;
-        cout << "NOOOO" << endl;
+        cout << "No pending orders"<< endl;
     }
-    cout <<"Agr is "<< q->arr[q->front] << " order is " << order[q->front] << endl;
-    q->front = (q->front + 1) % q->size;
+    else
+    {
+        if (q->front != q->rear)
+        {
+            int age = q->arr[q->front];
+            string pizza = order[q->front];
+            q->front = (q->front + 1) % q->size;
+            cout<<"Age is "<<age<<" Pizza is "<<pizza<<endl;
+        }
+        else
+        {
+            int age = q->arr[q->front];
+            string pizza = order[q->front];
+            q->front = -1;
+            q->rear = -1;
+            cout<<"Age is "<<age<<" Pizza is "<<pizza<<endl;
+        }
+    }
 }
 
 
@@ -100,7 +118,66 @@ int main(int argc, char const *argv[])
 
     while (1)
     {
+        int choiceMain;
         cout<<"1. Login as customer"<<endl<<"2. Login as Admin"<<endl<<"3. Exit"<<endl;
+        cin>>choiceMain;
+        if (choiceMain == 1)
+        {
+            while (1)
+            {
+                int choice;
+                cout<<"1. Order"<<endl<<"2. Exit"<<endl;
+                cin>>choice;
+                if (choice == 1)
+                {
+                    int age;
+                    string pizza;
+                    cout<<"Enter your age"<<endl;
+                    cin>>age;
+                    cout<<"Enter name of pizza"<<endl;
+                    cin>>pizza;
+                    enQueue(q,age,pizza,order);
+                }
+                else if (choice == 2)
+                {
+                    break;
+                }
+                else
+                {
+                    cout<<"Invalid Choice"<<endl;
+                }
+            }
+        }
+        else if (choiceMain == 2)
+        {
+            while (1)
+            {
+                int choice;
+                cout<<"1. Deliver order"<<endl<<"2. Exit";
+                cin>>choice;
+                if (choice == 1)
+                {
+                    deQueueMax(q, order);
+                }
+                else if (choice == 2)
+                {
+                    break;
+                }
+                else
+                {
+                    cout<<"Invalid choice"<<endl;
+                }
+            }
+            
+        }
+        else if (choiceMain == 3)
+        {
+            break;
+        }
+        else
+        {
+            cout<<"Invalid choice"<<endl;
+        }
     }
     
 
