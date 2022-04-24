@@ -98,6 +98,10 @@ int main(int argc, char const *argv[])
     q->arr = (int *)malloc(sizeof(int) * q->size);
     vector<string> order(q->size, "No Pizza");
 
+    while (1)
+    {
+        cout<<"1. Login as customer"<<endl<<"2. Login as Admin"<<endl<<"3. Exit"<<endl;
+    }
     
 
 
