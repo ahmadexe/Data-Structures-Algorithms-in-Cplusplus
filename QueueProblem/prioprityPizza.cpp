@@ -24,18 +24,20 @@ int isEmpty(Queue *q)
 
 void enQueue(Queue *q, int value, string ord, vector<string> &order)
 {
-    if (isEmpty(q))
+    if (isFull(q))
+    {
+        cout<<"No more orders accepeted"<<endl;
+        return;
+    }
+    
+    else if (isEmpty(q))
     {
         q->front = 0;
         q->rear = 0;
         q->arr[q->front] = value;
         order[q->front] = ord;
     }
-    if (isFull(q))
-    {
-        cout<<"No more orders accepeted"<<endl;
-        return;
-    }
+    
     else
     {
         int i = q->rear;
@@ -153,7 +155,7 @@ int main(int argc, char const *argv[])
             while (1)
             {
                 int choice;
-                cout<<"1. Deliver order"<<endl<<"2. Exit";
+                cout<<"1. Deliver order"<<endl<<"2. Exit"<<endl;
                 cin>>choice;
                 if (choice == 1)
                 {
