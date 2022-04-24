@@ -12,7 +12,7 @@ struct Queue
 
 int isFull(Queue *q)
 {
-    return (q->front == 0 && q->rear == q->size - 1);
+    return ((q->rear + 1) % q->size == q->front);
 }
 
 int isEmpty(Queue *q)
@@ -98,7 +98,7 @@ int main(int argc, char const *argv[])
     q->arr = (int *)malloc(sizeof(int) * q->size);
     vector<string> order(q->size, "No Pizza");
 
-
+    
 
 
 
