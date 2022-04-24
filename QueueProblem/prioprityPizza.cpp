@@ -32,13 +32,12 @@ void enQueue(Queue *q, int value)
     {
         int i = q->rear;
         int j = i + 1;
-        while (i != -1 && q->arr[i] > value)
+        while (j != 0 && !(q->arr[i] < value))
         {
             q->arr[j] = q->arr[i];
             i--;
             j--;
         }
-        q->arr[j] = q->arr[i];
         q->arr[j] = value;
         q->rear++;
     }
@@ -84,8 +83,17 @@ int main(int argc, char const *argv[])
     enQueue(q, 40);
     enQueue(q, 30);
     enQueue(q, 15);
-    printArray(q);
-    // deQueueMinimum(q);
+    // printArray(q);
+    cout<<deQueueMinimum(q)<<endl;
+    cout<<deQueueMinimum(q)<<endl;
+    cout<<deQueueMinimum(q)<<endl;
+    cout<<deQueueMinimum(q)<<endl;
+    cout<<deQueueMinimum(q)<<endl;
+
+
+
+
+
     // printArray(q);
     // deQueueMaximum(q);
     // printArray(q);
