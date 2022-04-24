@@ -20,7 +20,9 @@ int isEmpty(Queue *q)
     return (q->front == -1 && q->rear == -1);
 }
 
-void enQueue(Queue *q, int value)
+
+
+void enQueue(Queue *q, int value, string ord, vector<string> &order)
 {
     if (isEmpty(q))
     {
@@ -31,18 +33,42 @@ void enQueue(Queue *q, int value)
     else
     {
         int i = q->rear;
-        int j = i + 1;
-        while (j != 0 && !(q->arr[i] < value))
+        int j = (q->rear + 1) % q->size;
+        bool flagI = true;
+        bool flagJ = true;
+        while (j != q->front && q->arr[i] < value)
         {
             q->arr[j] = q->arr[i];
-            i--;
-            j--;
+            if (i == 0 || j == 0)
+            {
+                if (i == 0)
+                {
+                    i = q->size - 1;
+                    flagI = false;
+                }
+                if (j == 0)
+                {
+                    j = q->size - 1;
+                    flagJ = false;
+                }
+            }
+            if (flagI)
+            {
+                i--;
+            }
+            if (flagJ)
+            {
+                j--;
+            }
+            flagI = true;
+            flagJ = true;
         }
         q->arr[j] = value;
-        q->rear++;
+        order[j] = ord;
+        cout<<order[j]<<endl;
+        q->rear = (q->rear + 1) % q->size;
     }
 }
-
 void printArray(Queue *q)
 {
     for (int i = q->front; i <= q->rear; i++)
@@ -52,16 +78,18 @@ void printArray(Queue *q)
     cout << endl;
 }
 
-int deQueueMinimum(Queue *q)
+void deQueueMax(Queue *q, vector<string> order)
 {
     if (isEmpty(q))
     {
-        return -1;
+        // return -1;
+        cout << "NOOOO" << endl;
     }
-    return q->arr[q->front++];
+    cout << q->arr[q->front] << " order is " << order[q->front] << endl;
+    q->front = (q->front + 1) % q->size;
 }
 
-int deQueueMaximum(Queue *q)
+int deQueueMin(Queue *q)
 {
     if (isEmpty(q))
     {
@@ -76,23 +104,22 @@ int main(int argc, char const *argv[])
     Queue *q = new Queue;
     q->front = -1;
     q->rear = -1;
-    q->size = 5;
+    q->size = 6;
     q->arr = (int *)malloc(sizeof(int) * q->size);
-    enQueue(q, 20);
-    enQueue(q, 10);
-    enQueue(q, 40);
-    enQueue(q, 30);
-    enQueue(q, 15);
+    vector<string> order(q->size);
+    enQueue(q, 20, "B pizza", order);
+    enQueue(q, 10, "A Pizza", order);
+    enQueue(q, 40, "E Pizza", order);
+    enQueue(q, 40, "D pizza", order);
+    enQueue(q, 30, "C pizza", order);
+    // enQueue(q, 15, "OK");
     // printArray(q);
-    cout<<deQueueMinimum(q)<<endl;
-    cout<<deQueueMinimum(q)<<endl;
-    cout<<deQueueMinimum(q)<<endl;
-    cout<<deQueueMinimum(q)<<endl;
-    cout<<deQueueMinimum(q)<<endl;
-
-
-
-
+    deQueueMax(q, order);
+    deQueueMax(q, order);
+    // cout<<"MIN "<<deQueueMin<<q<<endl;
+    deQueueMax(q, order);
+    deQueueMax(q, order);
+    deQueueMax(q, order);
 
     // printArray(q);
     // deQueueMaximum(q);
