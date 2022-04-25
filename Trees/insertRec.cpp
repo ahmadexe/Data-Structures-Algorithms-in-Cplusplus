@@ -9,7 +9,19 @@ struct Node
     Node *left;
 };
 
-Node *root = NULL;
+
+void inOrder(Node* root)
+{
+    if (!root)
+    {
+        return;
+    }
+    inOrder(root->left);
+    cout<<root->data<<" ";
+    inOrder(root->right);
+}
+
+
 
 int main(int argc, char const *argv[])
 {
