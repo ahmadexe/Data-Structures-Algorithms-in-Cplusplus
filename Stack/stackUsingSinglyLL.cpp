@@ -40,8 +40,8 @@ void checkPalindrome(Node* p) {
         checkPalindrome(p->next);
         s2 += p->data;
     }
-}
 
+}
 
 
 int main(int argc, char const *argv[])
