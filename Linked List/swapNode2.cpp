@@ -37,7 +37,7 @@ void insert(int uid){
 
 void display()
 {
-    struct NodeStudent *p = head;
+    struct Node*p = head;
     while (p)
     {
         cout << p->id << " ";
