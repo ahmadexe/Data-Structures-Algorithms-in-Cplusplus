@@ -58,6 +58,10 @@ int height(Node* r)
     {
         return 0;
     }
+    else
+    {
+        return ((max(height(r->left), height(r->right))) + 1);
+    }
 }
 
 int main(int argc, char const *argv[])
@@ -73,7 +77,9 @@ int main(int argc, char const *argv[])
     insert(root,40);
     insert(root,60);    
     
-    inOrder(root);
+    cout<<height(root);
+
+    // inOrder(root);
 
     return 0;
 }
