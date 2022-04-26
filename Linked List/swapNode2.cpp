@@ -46,11 +46,53 @@ void display()
     cout << endl;
 }
 
+void swapNodes(int a, int b)
+{
+    if (!a || !b)
+    {
+        return;
+    }
+    Node* p = new Node;
+    p = head;
+    Node* pPrev = NULL;
+    Node* q = new Node;
+    q = head;
+    Node* qPrev = NULL;
+
+    while ((p->id != a || q->id != b) && (p && q))
+    {
+        if (p->id != a)
+        {
+            pPrev = p;
+            p = p->next;
+        }
+        if (q->id != b)
+        {
+            qPrev = q;
+            q = q->next;
+        }
+    }
+
+    pPrev->next = q;
+    qPrev->next = p;
+
+    Node * temp = q->next;
+    q->next = p->next;
+    p->next = temp;
+}
 
 int main(int argc, char const *argv[])
 {
-
-    
+    insert(10);
+    insert(20);
+    insert(30);
+    insert(40);
+    insert(50);
+    insert(60);
+    display();
+    cout<<endl;
+    swapNodes(30, 40);
+    display();
 
 
     return 0;
