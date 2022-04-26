@@ -35,6 +35,17 @@ void insert(int uid){
     }
 }
 
+void display()
+{
+    struct NodeStudent *p = head;
+    while (p)
+    {
+        cout << p->id << " ";
+        p = p->next;
+    }
+    cout << endl;
+}
+
 
 int main(int argc, char const *argv[])
 {
