@@ -8,7 +8,7 @@ struct Node{
 };
 
 Node* head = NULL;
-
+Node* sortedHead = NULL;
 void insert(int val)
 {
     Node* p = new Node;
@@ -25,6 +25,22 @@ void insert(int val)
     }
 }
 
+void insertSorted(int val)
+{
+    Node* p = new Node;
+    p->data = val;
+    p->next = NULL;
+    if (!sortedHead)
+    {
+        sortedHead = p;
+    }
+    else
+    {
+        p->next = sortedHead;
+        sortedHead = p;
+    }
+}
+
 void display()
 {
     Node* p = head;
@@ -36,6 +52,22 @@ void display()
     cout<<endl;
 }
 
+int pop()
+{
+    if (!head)
+    {
+        return -1;
+    }
+    else
+    {
+        int value = head->data;
+        head = head->next;
+        return value;
+    }
+}
+
+
+
 int main(int argc, char const *argv[])
 {
 
@@ -44,7 +76,8 @@ int main(int argc, char const *argv[])
     insert(30);
     insert(40);
 
-    display();
+
+
 
     return 0;
 }
