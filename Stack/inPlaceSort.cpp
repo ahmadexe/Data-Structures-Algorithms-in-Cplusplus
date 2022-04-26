@@ -77,11 +77,52 @@ public:
 };
 Stack *s = new Stack(100);
 
+void insertInRightLocation(int val)
+{
+    if (s->arr[s->top] > val || s->isEmpty())
+    {
+        s->push(val);
+        return;
+    }
+    else
+    {
+        int a = s->pop();
+        insertInRightLocation(val);
+        s->push(a);
+    }
+}
+
+void sortStack()
+{
+    if (s->isEmpty())
+    {
+        return;
+    }
+    else
+    {
+        int a = s->pop();
+        insertInRightLocation(a);
+        sortStack();
+    }
+}
 
 int main(int argc, char const *argv[])
 {
 
     
+    s->push(1);
+    s->push(12);
+    s->push(100);
+    s->push(21);
+    s->push(13);
+
+    sortStack();
+
+    cout<<s->pop()<<endl;
+    cout<<s->pop()<<endl;
+    cout<<s->pop()<<endl;
+    cout<<s->pop()<<endl;
+    cout<<s->pop()<<endl;
 
 
     return 0;
