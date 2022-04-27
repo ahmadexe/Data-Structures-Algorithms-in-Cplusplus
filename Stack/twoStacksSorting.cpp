@@ -81,29 +81,29 @@ Stack *sorted = new Stack(100);
 
 void insertSorted(int val)
 {
-    if (s->arr[s->top] > val || s->isEmpty())
+    if (sorted->arr[sorted->top] > val || sorted->isEmpty())
     {
-        s->push(val);
+        sorted->push(val);
     }
     else
     {
-        int x = s->pop();
+        int x = sorted->pop();
         insertSorted(val);
-        s->push(x);
+        sorted->push(x);
     }
 }
 
 void sortMyStack()
 {
-    if (s->isEmpty())
+    if (sorted->isEmpty())
     {
         return;
     }
     else
     {
-        int val = s->pop();
+        int val = sorted->pop();
         insertSorted(val);
-        // s->push(val);        
+              
     }
 }
 
@@ -115,13 +115,46 @@ int main(int argc, char const *argv[])
     s->push(5);
     s->push(60);
 
+    sorted->push(100);
+    sorted->push(10);
+    sorted->push(30);
+    sorted->push(5);
+    sorted->push(60);
+
     sortMyStack();
 
-    cout << s->pop() << endl;
-    cout << s->pop() << endl;
-    cout << s->pop() << endl;
-    cout << s->pop() << endl;
-    cout << s->pop() << endl;
+    s->push(sorted->arr[sorted->top]);
+
+    // cout << s->pop() << endl;
+    // cout << s->pop() << endl;
+    // cout << s->pop() << endl;
+    // cout << s->pop() << endl;
+    // cout << s->pop() << endl;
+
+    bool flag = 1;
+    while (1)
+    {
+        int choice;
+        cout<<"1. To pop\n"<<"2. Exit"<<endl;
+        cin>>choice;
+        if (choice == 1)
+        {
+            if (s->top <= sorted->top && (flag && s->arr[s->top] == sorted->arr[sorted->top]))
+            {
+                s->pop();
+                cout<<s->pop()<<endl;
+            }
+            else
+            {
+                cout<<s->pop()<<endl;
+            }
+        }
+        else if (choice == 2)
+        {
+            break;
+        }
+    }
+
 
     return 0;
 }
