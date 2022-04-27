@@ -1,5 +1,5 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 class Stack
@@ -75,20 +75,21 @@ public:
         return -1;
     }
 };
+
 Stack *s = new Stack(100);
 Stack *sorted = new Stack(100);
 
-void insertSorted(int value)
+void insertSorted(int val)
 {
-    if (sorted->arr[sorted->top] > value || sorted->isEmpty())
+    if (s->arr[s->top] > val || s->isEmpty())
     {
-        sorted->push(value);
+        s->push(val);
     }
     else
     {
-        int a = sorted->pop();
-        insertSorted(value);
-        sorted->push(a);
+        int x = s->pop();
+        insertSorted(val);
+        s->push(x);
     }
 }
 
@@ -102,14 +103,12 @@ void sortMyStack()
     {
         int val = s->pop();
         insertSorted(val);
-        // s->push(val);
+        // s->push(val);        
     }
 }
 
-
 int main(int argc, char const *argv[])
 {
-
     s->push(100);
     s->push(10);
     s->push(30);
@@ -118,11 +117,11 @@ int main(int argc, char const *argv[])
 
     sortMyStack();
 
-    cout<<sorted->pop()<<endl;
-    cout<<sorted->pop()<<endl;
-    cout<<sorted->pop()<<endl;
-    cout<<sorted->pop()<<endl;
-    cout<<sorted->pop()<<endl;
+    cout << s->pop() << endl;
+    cout << s->pop() << endl;
+    cout << s->pop() << endl;
+    cout << s->pop() << endl;
+    cout << s->pop() << endl;
 
     return 0;
 }
