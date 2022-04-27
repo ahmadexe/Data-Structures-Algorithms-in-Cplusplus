@@ -78,13 +78,127 @@ int precedence(char c)
     {
         return 1;
     }
-    else{
+    else
+    {
         return -1;
     }
 }
 
+int validate(string s)
+{
+    int i = 0;
+    int j = 1;
+    while (j < s.size())
+    {
+        if ((precedence(s[i]) > -1))
+        {
+            // cout<<s[i]<<" "<<precedence(s[i])<<endl;
+
+            if (precedence(s[j]) > -1)
+            {
+                // cout<<s[j]<<" "<<precedence(s[j])<<endl;
+                return 0;
+            }
+        }
+        i++;
+        j++;
+    }
+    return 1;
+}
+
+
+int balancedParenthesis(string str)
+{
+    int i = 0;
+    while (i < s->size)
+    {
+        if (str[i] == '(')
+        {
+            s->push('(');
+        }
+        else if (str[i] == '{')
+        {
+            if (s->isEmpty())
+            {
+                s->push('{');
+            }
+            else if (precedence('{') <= precedence(s->arr[s->top])){
+                s->push('{');
+            }
+            else{
+                return 0;
+            }
+        }
+        else if (str[i] == '[')
+        {
+            if (s->isEmpty())
+            {
+                s->push('[');
+            }
+            else if (precedence('[') <= precedence(s->arr[s->top])){
+                s->push('[');
+            }
+            else{
+                return 0;
+            }
+        }
+        else if (str[i] == ']')
+        {
+            if (s->arr[s->top] == '[')
+            {
+                s->pop();
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else if (str[i] == '}')
+        {
+            if (s->arr[s->top] == '{')
+            {
+                s->pop();
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        else if (str[i] == ')')
+        {
+            if (s->arr[s->top] == '(')
+            {
+                s->pop();
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        i++;
+    }
+    if (s->isEmpty())
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+
 string postfix(string infix)
 {
+
+    if (!validate(infix))
+    {
+        return "Wrong statement";
+    }
+    if (!balancedParenthesis(infix))
+    {
+        return "Wrong statement";
+    }
     string result = "";
     int i = 0;
     while (i < infix.size())
@@ -107,7 +221,7 @@ string postfix(string infix)
             }
         }
         else{
-            while (s->isEmpty() == 0 && precedence(s->arr[s->top]) >= precedence(infix[i]))
+            while (s->isEmpty() == 0 && (precedence(s->arr[s->top]) >= precedence(infix[i])))
             {
                 result += s->arr[s->top];
                 s->pop();
