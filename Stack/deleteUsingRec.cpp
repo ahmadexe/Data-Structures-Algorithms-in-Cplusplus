@@ -76,14 +76,45 @@ public:
         return -1;
     }
 };
-Stack *s = new Stack(100);
+Stack *s = new Stack(5);
 
+int deleted = 0;
 
+void del(int key)
+{
+    if (s->isEmpty() || deleted)
+    {
+        return;
+    }
+    else
+    {
+        int temp = s->pop();
+        del(key);
+        if (temp != key || deleted)
+        {
+            s->push(temp);
+        }
+        else if (temp == key)
+        {
+            deleted = 1;
+        }
+    }
+}
 
 int main(int argc, char const *argv[])
 {
 
     
+    s->push(10);
+    s->push(20);
+    s->push(10);
+    s->push(40);
+
+    del(10);
+
+    cout<<s->pop()<<endl;
+    cout<<s->pop()<<endl;
+    cout<<s->pop()<<endl;
 
 
     return 0;
