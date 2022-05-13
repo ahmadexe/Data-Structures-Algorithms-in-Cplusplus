@@ -1,45 +1,45 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
- 
+
 struct Node
 {
-    Node* left;
+    Node *left;
     int data;
-    Node* right;
+    Node *right;
 };
- 
- 
-void insert(int val, Node* r){
+
+void insert(int val, Node *r)
+{
     if (!r->left || !r->right)
     {
-        Node* n = new Node;
+        Node *n = new Node;
         n->data = val;
         n->left = NULL;
         n->right = NULL;
         if (!r->left && val < r->data)
         {
             r->left = n;
+            return;
         }
         else if (!r->right && val > r->data)
         {
             r->right = n;
+            return;
         }
+    }
+
+    if (val > r->data)
+    {
+        insert(val, r->right);
     }
     else
     {
-        if (val > r->data)
-        {
-            insert(val, r->right);
-        }
-        else
-        {
-            insert(val, r->left);
-        }
+        insert(val, r->left);
     }
 }
- 
-void inOrder(Node* r)
+
+void inOrder(Node *r)
 {
     if (!r)
     {
@@ -48,18 +48,18 @@ void inOrder(Node* r)
     else
     {
         inOrder(r->left);
-        cout<<r->data<<" ";
+        cout << r->data << " ";
         inOrder(r->right);
     }
 }
- 
-void printAncestors(Node* r,int num)
+
+void printAncestors(Node *r, int num)
 {
-    Node* p = new Node;
+    Node *p = new Node;
     p = r;
     while (p->data != num && (p->left != NULL && p->right != NULL))
     {
-        cout<<p->data<<" ";
+        cout << p->data << " ";
         if (p->data < num)
         {
             p = p->right;
@@ -73,7 +73,7 @@ void printAncestors(Node* r,int num)
 
 int main(int argc, char const *argv[])
 {
-    Node* root = new Node;
+    Node *root = new Node;
     root->data = 40;
     root->left = NULL;
     root->right = NULL;
@@ -83,7 +83,7 @@ int main(int argc, char const *argv[])
     insert(50, root);
     // insert(5, root);
     inOrder(root);
-    cout<<endl;
+    cout << endl;
     // printAncestors(root, 20);
-   return 0;
+    return 0;
 }

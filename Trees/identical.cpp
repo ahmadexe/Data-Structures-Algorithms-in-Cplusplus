@@ -1,25 +1,25 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Node
 {
     int data;
-    Node* left;
-    Node* right;
+    Node *left;
+    Node *right;
     Node(int val)
-    {   
+    {
         data = val;
         left = NULL;
         right = NULL;
     }
 };
 
-void insert(Node* root, int val)
+void insert(Node *root, int val)
 {
     if (!root->left || !root->right)
     {
-        Node* p = new Node(val);
+        Node *p = new Node(val);
         if (val < root->data && !root->left)
         {
             root->left = p;
@@ -32,17 +32,16 @@ void insert(Node* root, int val)
         }
     }
     if (val > root->data)
-        {
-            insert(root->right, val);
-        }
-        else
-        {
-            insert(root->left, val);
-        }
-    
+    {
+        insert(root->right, val);
+    }
+    else
+    {
+        insert(root->left, val);
+    }
 }
 
-void inOrder(Node* root)
+void inOrder(Node *root)
 {
     if (!root)
     {
@@ -51,7 +50,7 @@ void inOrder(Node* root)
     else
     {
         inOrder(root->left);
-        cout<<root->data<<" ";
+        cout << root->data << " ";
         inOrder(root->right);
     }
 }
@@ -59,15 +58,12 @@ void inOrder(Node* root)
 int main(int argc, char const *argv[])
 {
 
-    
-    Node* root1 = new Node(40);
-    insert(root1,30);
-    insert(root1,10);
-    insert(root1,15);
-    insert(root1,50);
-    // cout<<endl;
+    Node *root1 = new Node(40);
+    insert(root1, 30);
+    insert(root1, 10);
+    insert(root1, 15);
+    insert(root1, 50);
     inOrder(root1);
-
 
     return 0;
 }
