@@ -41,26 +41,42 @@ void insert(Node *root, int val)
     }
 }
 
-void inOrder(Node *root)
+void preOrder(Node* root)
 {
-    if (!root)
+    Node* p = root;
+    stack <Node*> s;
+    s.push(p);
+    while (!s.empty())
     {
-        return;
-    }
-    else
-    {
-        inOrder(root->left);
-        cout << root->data << " ";
-        inOrder(root->right);
+        cout<<s.top()->data<<" ";
+        s.pop();
+        if (p->right)
+        {
+            s.push(p->right);
+            // p = p->right;
+        }
+        if (p->left)
+        {
+            s.push(p->left);
+        }
+        if (!s.empty())
+        {
+        p = s.top();
+        }
     }
 }
 
 
 int main(int argc, char const *argv[])
 {
-
-    
-
+    Node *root1 = new Node(40);
+    insert(root1, 30);
+    insert(root1, 10);
+    insert(root1, 15);
+    insert(root1, 50);
+    insert(root1, 60);
+    insert(root1, 70);
+    preOrder(root1);
 
     return 0;
 }
