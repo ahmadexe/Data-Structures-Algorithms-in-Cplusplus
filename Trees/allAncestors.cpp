@@ -9,7 +9,6 @@ struct Node
     Node* right;
 };
  
-// Node* root = NULL;
  
 void insert(int val, Node* r){
     if (!r->left || !r->right)
