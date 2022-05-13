@@ -76,7 +76,6 @@ int checkIdentical(Node* rootA, Node* rootB)
 
 int main(int argc, char const *argv[])
 {
-
     Node *root1 = new Node(40);
     insert(root1, 30);
     insert(root1, 10);
@@ -87,11 +86,11 @@ int main(int argc, char const *argv[])
     insert(root2, 10);
     insert(root2, 15);
     insert(root2, 50);
-
     inOrder(root1);
     cout<<endl;
     inOrder(root2);
     cout<<endl;
+
     cout<<checkIdentical(root1, root2);
     return 0;
 }
