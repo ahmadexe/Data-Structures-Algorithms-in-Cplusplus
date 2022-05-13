@@ -5,115 +5,132 @@ using namespace std;
 struct Node
 {
     int data;
-    Node *right;
     Node *left;
+    Node *right;
+    Node(int val)
+    {
+        data = val;
+        left = NULL;
+        right = NULL;
+    }
 };
 
-Node *root = NULL;
-
-void insert(int data)
+void insert(Node *root, int val)
 {
-    Node *cur = new Node;
-    cur->data = data;
-    cur->left = NULL;
-    cur->right = NULL;
-    if (!root)
+    if (!root->left || !root->right)
     {
-        root = cur;
+        Node *p = new Node(val);
+        if (val < root->data && !root->left)
+        {
+            root->left = p;
+            return;
+        }
+        else if (p->data > root->data && !root->right)
+        {
+            root->right = p;
+            return;
+        }
+    }
+    if (val > root->data)
+    {
+        insert(root->right, val);
     }
     else
     {
-        Node *p = new Node;
-        p = root;
-        Node *temp = new Node;
-        while (p != NULL)
-        {
-            if (p->data < data)
-            {
-                temp = p;
-                p = p->right;
-            }
-            else
-            {
-                temp = p;
-                p = p->left;
-            }
-        }
-        p = cur;
-        if (p->data > temp->data)
-        {
-            temp->right = p;
-        }
-        else
-        {
-            temp->left = p;
-        }
+        insert(root->left, val);
     }
 }
 
-void inOrder(Node *x)
+void inOrder(Node *root)
 {
-    if (!x)
+    if (!root)
     {
         return;
     }
-    inOrder(x->left);
-    cout << x->data << " ";
-    inOrder(x->right);
-}
-
-Node *inOrderPre(Node *r)
-{
-    if (r->left != NULL){
-    r = r->left;
-    while (r->right)
+    else
     {
-        r = r->right;
+        inOrder(root->left);
+        cout << root->data << " ";
+        inOrder(root->right);
     }
-    return r;
-    }
-    
 }
 
-struct Node *deleteNode(Node *r, int value)
+Node* inOrderPostPre(Node* root)
 {
-    if (r == NULL)
+    Node* p = root;
+    if (p->right)
+    {
+        p = p->right;
+        while (p->left)
+        {
+            p = p->left;
+        }
+    }
+    else if (p->left)
+    {
+        p = p->left;
+        while (p->right)
+        {
+            p = p->right;
+        }
+    }
+    return p;
+}
+
+Node* deleteNode(Node* root , int val)
+{
+    if (!root)
     {
         return NULL;
     }
-    if (r->left == NULL && r->right == NULL)
+    else if (!root->left && !root->right)
     {
-        free(r);
+        free(root);
+        root = NULL;
         return NULL;
-    }
-    if (value < r->data)
-    {
-        r->left = deleteNode(r->left, value);
-    }
-    else if (value > r->data)
-    {
-        r->right = deleteNode(r->right, value);
     }
     else
     {
-        Node *inPre = inOrderPre(r);
-        r->data = inPre->data;
-        r->left = deleteNode(r->left, inPre->data);
+        if (val > root->data)
+        {
+            root->right = deleteNode(root->right, val);
+        }
+        else if (val < root->data)
+        {
+            root->left = deleteNode(root->left, val);
+        }
+        else
+        {
+            Node* replace = inOrderPostPre(root);
+            root->data = replace->data;
+            if (root->right)
+            {
+                root->right =  deleteNode(root->right, root->data);
+            }
+            else if (root->left)
+            {
+                root->left = deleteNode(root->left, root->data);
+            }
+        }
+ 
     }
-    return r;
+    return root;
 }
 
 int main(int argc, char const *argv[])
 {
-    insert(30);
-    insert(20);
-    insert(50);
-    insert(70);
-    insert(40);
-    insert(60);
-    Node *z = root;
-    deleteNode(z, 70);
-    inOrder(z);
+    Node *root1 = new Node(40);
+    insert(root1, 30);
+    insert(root1, 10);
+    insert(root1, 15);
+    insert(root1, 50);
+    Node* p = root1;
+    inOrder(root1);
+    cout<<"\n";
+
+    deleteNode(p, 30);
+    cout<<"\n";
+    inOrder(root1);
  
     return 0;
 }
