@@ -55,6 +55,25 @@ void inOrder(Node *root)
     }
 }
 
+int checkIdentical(Node* rootA, Node* rootB)
+{
+    if (!rootA && !rootB)
+    {
+        return 1;
+    }
+    else if (!rootA || !rootB)
+    {
+        return 0;
+    }
+    else
+    {
+        int condition1 = rootA->data == rootB->data;
+        int condition2 = checkIdentical(rootA->left, rootB->left);
+        int condition3 = checkIdentical(rootA->right, rootB->right);
+        return (condition1 && condition2 && condition3); 
+    }
+}
+
 int main(int argc, char const *argv[])
 {
 
@@ -63,7 +82,16 @@ int main(int argc, char const *argv[])
     insert(root1, 10);
     insert(root1, 15);
     insert(root1, 50);
-    inOrder(root1);
+    Node* root2 = new Node(40);
+    insert(root2, 30);
+    insert(root2, 10);
+    insert(root2, 15);
+    insert(root2, 50);
 
+    inOrder(root1);
+    cout<<endl;
+    inOrder(root2);
+    cout<<endl;
+    cout<<checkIdentical(root1, root2);
     return 0;
 }
