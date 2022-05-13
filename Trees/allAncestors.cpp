@@ -74,16 +74,16 @@ void printAncestors(Node* r,int num)
 int main(int argc, char const *argv[])
 {
     Node* root = new Node;
-    root->data = 30;
+    root->data = 40;
     root->left = NULL;
     root->right = NULL;
+    insert(30, root);
     insert(10, root);
+    insert(15, root);
     insert(50, root);
-    insert(20, root);
-    insert(70, root);
-    insert(5, root);
+    // insert(5, root);
     inOrder(root);
     cout<<endl;
-    printAncestors(root, 20);
+    // printAncestors(root, 20);
    return 0;
 }
