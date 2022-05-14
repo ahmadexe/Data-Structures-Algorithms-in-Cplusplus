@@ -72,7 +72,6 @@ void enQueue(Queue *q, int value, string ord, vector<string> &order)
             flagI = true;
             flagJ = true;
         }
-
         q->arr[j] = value;
         order[j] = ord;
         q->rear = (q->rear + 1) % q->size;
