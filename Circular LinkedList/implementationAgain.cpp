@@ -47,7 +47,7 @@ void print()
 
 int main(int argc, char const *argv[])
 {
-
+ 
     insert(10);
     insert(20);
     insert(30);
