@@ -105,14 +105,13 @@ Node* deleteNode(Node* root , int val)
             root->data = replace->data;
             if (root->right)
             {
-                root->right =  deleteNode(root->right, root->data);
+                root->right = deleteNode(root->right, root->data);
             }
             else if (root->left)
             {
                 root->left = deleteNode(root->left, root->data);
             }
         }
- 
     }
     return root;
 }
@@ -127,8 +126,7 @@ int main(int argc, char const *argv[])
     Node* p = root1;
     inOrder(root1);
     cout<<"\n";
-
-    deleteNode(p, 30);
+    deleteNode(p, 10);
     cout<<"\n";
     inOrder(root1);
  
