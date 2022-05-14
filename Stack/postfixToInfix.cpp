@@ -86,6 +86,6 @@ string postfix(string postfix) {
 
 int main(int argc, char const *argv[])
 {
-    cout<<postfix("abc*+de*f+g*+")<<endl;   
+    cout<<postfix("ab+kx-*yd+/")<<endl;   
     return 0;
 }

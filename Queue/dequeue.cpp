@@ -78,22 +78,62 @@ int deQueue(Queue *q)
     return -1;
 }
 
+stack<int> s;
+
+void pushAll(Queue* q)
+{
+    while (!isEmpty(q))
+    {
+        s.push(deQueue(q));
+    }
+}
+
+void recreate(Queue* q)
+{
+    if (s.empty())
+    {
+        return;
+    }
+    int temp = s.top();
+    s.pop();
+    recreate(q);
+    if (temp >= 3)
+    {
+        s.push(temp);
+    }
+    else
+    {
+        enQueue(q, temp);
+    }
+}
+
 int main(int argc, char const *argv[])
 {
 
     Queue *q = new Queue;
     q->size = 5;
     q->arr = (int *)malloc(sizeof(int) * q->size);
-    enQueue(q, 10);
-    enQueue(q, 20);
-    enQueue(q, 30);
-    enQueue(q, 40);
-    enQueue(q, 50);
-    cout << deQueue(q) << endl;
-    cout << deQueue(q) << endl;
-    cout << deQueue(q) << endl;
-    cout << deQueue(q) << endl;
-    cout << deQueue(q) << endl;
-    cout << isEmpty(q) << endl;
+
+    
+
+    enQueue(q, 3);
+    enQueue(q, 2);
+    enQueue(q, 3);
+    enQueue(q, 4);
+    enQueue(q, 1);
+
+    pushAll(q);
+    recreate(q);
+    cout<<deQueue(q)<<endl;
+    cout<<deQueue(q)<<endl;
+    
+    
+    cout<<s.top()<<endl;
+    s.pop();
+    cout<<s.top()<<endl;
+    s.pop();
+    cout<<s.top()<<endl;
+    s.pop();
+
     return 0;
 }
