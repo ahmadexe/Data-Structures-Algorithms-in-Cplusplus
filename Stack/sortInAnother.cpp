@@ -2,127 +2,100 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class Stack{
-    public:
-        int top = -1;
-        int* arr;
-        int size;
-
-        Stack(int size)
-        {
-            this->size = size;
-            arr = (int*)malloc(sizeof(int) * this->size);
-        }
-        int isEmpty()
-        {
-            if (this->top == -1)
-            {
-                return 1;
-            }
-            else{
-                return 0;
-            }
-        }
-        
-        int isFull()
-        {
-            if (this->top == this->size - 1)
-            {
-                return 1;
-            }else{
-                return 0;
-            }
-        }
-
-        void push(int data)
-        {
-            if (this->isFull())
-            {
-                cout<<"Stack overflow"<<endl;
-            }
-            else{
-                this->top++;
-                this->arr[this->top] = data;
-            }
-        }
-
-        int pop()
-        {
-            if (!this->isEmpty()){
-                int valToReturn = this->arr[this->top];
-                this->top--;
-                return valToReturn;
-            }
-            else{
-                cout<<"Stack underflow"<<endl;
-                return 0;
-            }
-        }
-
-        int topR()
-        {
-            if (!this->isEmpty())
-            {
-                return this->arr[this->top];
-            }
-            return -1;
-        }
-
-};
-Stack* s = new Stack(5);
-Stack* sorted = new Stack(5);
-void insertAtSorted(int val)
+struct Stack
 {
-    if (sorted->isEmpty() || sorted->arr[sorted->top] > val)
+    int top;
+    int size;
+    int* arr;
+    Stack(int sizeOfStack)
     {
-        sorted->push(val);
+        top = -1;
+        size = sizeOfStack;
+        arr = (int*)malloc(__SIZEOF_INT__ * size);
+    }
+};
+
+int empty(Stack* s)
+{
+    return (s->top == -1);
+}
+
+int full(Stack* s)
+{
+    return (s->top == s->size - 1);
+}
+
+void push(Stack* s, int val)
+{
+    if (full(s))
+    {
+        cout<<"Full"<<endl;
     }
     else
     {
-        int a = sorted->topR();
-        sorted->pop();
-        insertAtSorted(val);
-        sorted->push(a);
+        s->top++;
+        s->arr[s->top] = val;
     }
 }
 
-void sortt()
+int pop(Stack* s)
 {
-    if (s->isEmpty())
+    if (empty(s))
+    {
+        return -1;
+    }
+    int val = s->arr[s->top];
+    s->top--;
+    return val;
+}
+
+void sortMethod(Stack* s, int val)
+{
+    if (empty(s) || s->arr[s->top] > val)
+    {
+        push(s, val);
+        return;
+    }
+    else
+    {
+        int temp = pop(s);
+        sortMethod(s, val);
+        push(s, temp);
+    }
+}
+
+void sortStack(Stack* s, Stack* sorted)
+{
+    if (empty(s))
     {
         return;
     }
     else
     {
-    int temp = s->topR();
-    s->pop();
-    sortt();
-    insertAtSorted(temp);
-    s->push(temp);
+        int temp = pop(s);
+        sortStack(s, sorted);
+        sortMethod(sorted, temp);
+        push(s, temp);
     }
 }
 
 int main(int argc, char const *argv[])
 {
-    s->push(5);
-    s->push(14);
-    s->push(3);
-    s->push(21);
-    s->push(1);
 
-    sortt();
+    Stack* s2 = new Stack(6);
+    Stack* s = new Stack(6);
+    push(s, 10);
+    push(s, 2);
+    push(s, 5);
+    push(s, 3);
+    push(s, 50);
+    sortStack(s, s2);
+    cout<<pop(s2)<<endl;
+    cout<<pop(s2)<<endl;
+    cout<<pop(s2)<<endl;
+    cout<<pop(s2)<<endl;
+    cout<<pop(s2)<<endl;
 
-    cout<<s->pop()<<endl;
-    cout<<s->pop()<<endl;
-    cout<<s->pop()<<endl;
-    cout<<s->pop()<<endl;
-    cout<<s->pop()<<endl;
-    cout<<"----"<<endl;
-    cout<<sorted->pop()<<endl;
-    cout<<sorted->pop()<<endl;
-    cout<<sorted->pop()<<endl;
-    cout<<sorted->pop()<<endl;
-    cout<<sorted->pop()<<endl;
 
 
     return 0;
