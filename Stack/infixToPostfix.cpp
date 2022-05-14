@@ -92,11 +92,8 @@ int validate(string s)
     {
         if ((precedence(s[i]) > -1))
         {
-            // cout<<s[i]<<" "<<precedence(s[i])<<endl;
-
             if (precedence(s[j]) > -1)
             {
-                // cout<<s[j]<<" "<<precedence(s[j])<<endl;
                 return 0;
             }
         }
