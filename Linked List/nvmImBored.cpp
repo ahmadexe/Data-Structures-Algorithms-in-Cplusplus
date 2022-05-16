@@ -52,12 +52,6 @@ int main(int argc, char const *argv[])
     Node* tailEven = NULL;
     Node* tailOdd = NULL;
     
-    // if (!head && !tail)
-    // {
-    //     Node * p = new Node(10);
-    //     head = p;
-    //     tail = p;   
-    // }
     insert(&head,&tail, 20);
 
     insert(&head,&tail, 30);
