@@ -39,12 +39,6 @@ void insertSorted(Node** first,Node** last, Node** p)
         (*last)->next = NULL;
         (*first)->next = NULL;
     }
-    else if ((*first)->data == (*last)->data)
-    {
-        *last = q;
-        (*last)->next = NULL;
-        (*first)->next = *last;
-    }
     else
     {
         (*last)->next = q;
@@ -52,64 +46,6 @@ void insertSorted(Node** first,Node** last, Node** p)
         (*last)->next = NULL; 
         cout<<endl;
     }
-
-    // (*p)->next = NULL;
-    // if (!(*first) && !(*last))
-    // {
-    //     *first = *p;
-    //     *last = *p;
-    // }
-    // else
-    // {   cout<<"HERE ";
-    //     cout<<(*last)->data<<" ";
-    //     if ((*p)->data < (*first)->data)
-    //     {
-    //         cout<<endl;
-    //         cout<<"Enter 1"<<endl;
-    //         (*p)->next = (*first);
-    //         (*first) = *p;
-    //     }
-    //     else if ((*p)->data > (*last)->data)
-    //     {
-    //         cout<<endl<<"Enter 2"<<endl;
-
-    //         (*last)->next = *p;
-    //         (*last) = *p;
-    //     }
-    //     else
-    //     {
-    //         cout<<endl<<"Enter 3"<<endl;
-    //         Node* prev = (*first);
-    //         Node* curr = (*first)->next;
-    //         while (curr->data)
-    //         {
-    //             if (prev->data < (*p)->data && curr->data > (*p)->data)
-    //             {
-    //                 break;
-    //             }
-    //             prev = prev->next;
-    //             curr = curr->next;
-    //         }
-    //         prev->next = *p;
-    //         (*p)->next = curr;
-    //     }
-    //     cout<<(*last)->data<<" ";
-    //     cout<<endl;
-    // }
-    // if (!(*first) && !(*last))
-    // {
-    //     (*first) = p;
-    //     (*last) = p;
-    //     cout<<"First "<<(*first)->data<<endl;
-    //     cout<<"Last "<<(*last)->data<<endl;
-    // }
-    // else
-    // {
-    //     cout<<(*last)->data<<endl;
-    //     (*last)->next = p;
-    //     (*last) = p;
-    //     cout<<(*last)->data<<endl;
-    // }
 }
 
 
