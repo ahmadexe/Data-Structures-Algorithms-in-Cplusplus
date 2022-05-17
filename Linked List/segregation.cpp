@@ -28,7 +28,7 @@ void insertMain(Node** first,Node** last,int val)
     }
 }
 
-void insertSorted(Node** first,Node** last, Node** p)
+void insertSorted(Node** first,Node** last, Node* p)
 {
     // (*p)->next = NULL;
     // if (!(*first) && !(*last))
@@ -68,14 +68,18 @@ void insertSorted(Node** first,Node** last, Node** p)
     if (!(*first) && !(*last))
     {
         cout<<"Here 1"<<endl;
-        (*first) = *p;
-        (*last) = *p;
+        (*first) = p;
+        (*last) = p;
+        cout<<"First "<<(*first)->data<<endl;
+        cout<<"First "<<(*last)->data<<endl;
     }
     else
     {
         cout<<"Here 2"<<endl;
-        (*last)->next = *p;
-        (*last) = *p;
+        cout<<(*last)->data<<endl;
+        (*last)->next = p;
+        (*last) = p;
+        cout<<(*last)->data<<endl;
     }
 }
 
@@ -92,12 +96,12 @@ void segregate(Node** eHead,Node** eTail, Node** oHead, Node** oTail,Node** firs
         p = p->next;
         if (q->data % 2 == 0)
         {
-            insertSorted(eHead, eTail, &q);
+            insertSorted(eHead, eTail, q);
             // insertMain(eHead, eTail, q->data);
         }
         else if (q->data % 2 == 1)
         {
-            insertSorted(oHead, oTail, &q);
+            insertSorted(oHead, oTail, q);
             // insertMain(oHead, oTail, q->data);
         }
         free(q);
@@ -108,12 +112,12 @@ void segregate(Node** eHead,Node** eTail, Node** oHead, Node** oTail,Node** firs
         if (q->data % 2 == 0)
         {
             // insertMain(eHead, eTail, q->data);
-            insertSorted(eHead, eTail, &q);
+            insertSorted(eHead, eTail, q);
         }
         else if (q->data % 2 == 1)
         {
             // insertMain(oHead, oTail, q->data);
-            insertSorted(oHead, oTail, &q);
+            insertSorted(oHead, oTail, q);
         }
     }  
 }
