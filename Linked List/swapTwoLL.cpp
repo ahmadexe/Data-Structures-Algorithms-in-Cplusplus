@@ -125,6 +125,8 @@ void swap2(int firstVal, int secondVal)
         Node *temp = p1->next;
         p1->next = p2->next;
         p2->next = temp;
+        head = p2;
+        head2 = p1;
     }
 
     // q1 is null
@@ -135,6 +137,7 @@ void swap2(int firstVal, int secondVal)
         p1->next = p2->next;
         p2->next = temp;
         q2->next = p1;
+        head = p2;
     }
 
     // q2 is null
@@ -145,6 +148,7 @@ void swap2(int firstVal, int secondVal)
         p1->next = p2->next;
         p2->next = temp;
         q1->next = p2;
+        head2 = p1;
     }
 
     else
@@ -174,7 +178,7 @@ int main(int argc, char const *argv[])
     cout << endl;
     display2();
     cout << endl;
-    swap2(1, 7);
+    swap2(2, 5);
     cout << endl;
     display();
     cout << endl;
