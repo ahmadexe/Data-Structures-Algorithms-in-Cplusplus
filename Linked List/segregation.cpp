@@ -44,7 +44,6 @@ void insertSorted(Node** first,Node** last, Node** p)
         (*last)->next = q;
         *last = q;  
         (*last)->next = NULL; 
-        cout<<endl;
     }
 }
 
@@ -52,13 +51,11 @@ void insertSorted(Node** first,Node** last, Node** p)
 
 void segregate(Node** eHead,Node** eTail, Node** oHead, Node** oTail,Node** first)
 {
-    Node* p = (*first);
-    Node* q = NULL;
+    Node* p = NULL;
+    Node* q = (*first);
 
-    while (p)
+    while (q)
     {
-        q = p;
-        p = p->next;
         if (q->data % 2 == 0)
         {
             insertSorted(eHead, eTail, &q);
@@ -69,8 +66,6 @@ void segregate(Node** eHead,Node** eTail, Node** oHead, Node** oTail,Node** firs
             insertSorted(oHead, oTail, &q);
             // insertMain(oHead, oTail, q->data);
         }
-        free(q);
-        q = NULL;
     } 
 }
 
@@ -105,11 +100,7 @@ int main(int argc, char const *argv[])
     segregate(&evenHead, &evenTail, &oddHead, &oddTail, &head);
     display(oddHead);
     display(evenHead);
-
-
-
-
-
+    display(head);
 
     return 0;
 }
