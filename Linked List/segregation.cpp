@@ -100,7 +100,6 @@ int main(int argc, char const *argv[])
     segregate(&evenHead, &evenTail, &oddHead, &oddTail, &head);
     display(oddHead);
     display(evenHead);
-    display(head);
 
     return 0;
 }
