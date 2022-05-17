@@ -1,5 +1,5 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Node
@@ -91,12 +91,12 @@ void display2()
     }
 }
 
-void swap2 (int firstVal, int secondVal)
+void swap2(int firstVal, int secondVal)
 {
-    Node* q1 = NULL;
-    Node* p1 = head;
-    Node* q2 = NULL;
-    Node* p2 = head2;
+    Node *q1 = NULL;
+    Node *p1 = head;
+    Node *q2 = NULL;
+    Node *p2 = head2;
 
     while ((p1 && p2) && (p1->data != firstVal || p2->data != secondVal))
     {
@@ -114,15 +114,47 @@ void swap2 (int firstVal, int secondVal)
 
     if (!p1 || !p2)
     {
-        cout<<"None";
+        cout << "None";
         return;
     }
-    // Edge cases
-    Node* temp1 = p1->next;
-    q1->next = p2;
-    q2->next = p1;
-    p1->next = p2->next;
-    p2->next = temp1;
+
+    // q1 and q2 null
+
+    if (!q1 && !q2)
+    {
+        Node *temp = p1->next;
+        p1->next = p2->next;
+        p2->next = temp;
+    }
+
+    // q1 is null
+
+    else if (!q1)
+    {
+        Node *temp = p1->next;
+        p1->next = p2->next;
+        p2->next = temp;
+        q2->next = p1;
+    }
+
+    // q2 is null
+
+    else if (!q2)
+    {
+        Node *temp = p1->next;
+        p1->next = p2->next;
+        p2->next = temp;
+        q1->next = p2;
+    }
+
+    else
+    {
+        Node *temp1 = p1->next;
+        q1->next = p2;
+        q2->next = p1;
+        p1->next = p2->next;
+        p2->next = temp1;
+    }
 }
 
 int main(int argc, char const *argv[])
@@ -138,15 +170,14 @@ int main(int argc, char const *argv[])
     insert2(7);
     insert2(8);
 
-
     display();
-    cout<<endl;
+    cout << endl;
     display2();
-    cout<<endl;
+    cout << endl;
     swap2(1, 7);
-    cout<<endl;
+    cout << endl;
     display();
-    cout<<endl;
+    cout << endl;
     display2();
 
     return 0;
