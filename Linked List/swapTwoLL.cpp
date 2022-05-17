@@ -91,12 +91,63 @@ void display2()
     }
 }
 
+void swap2 (int firstVal, int secondVal)
+{
+    Node* q1 = NULL;
+    Node* p1 = head;
+    Node* q2 = NULL;
+    Node* p2 = head2;
+
+    while ((p1 && p2) && (p1->data != firstVal || p2->data != secondVal))
+    {
+        if (p1->data != firstVal)
+        {
+            q1 = p1;
+            p1 = p1->next;
+        }
+        if (p2->data != secondVal)
+        {
+            q2 = p2;
+            p2 = p2->next;
+        }
+    }
+
+    if (!p1 || !p2)
+    {
+        cout<<"None";
+        return;
+    }
+    // Edge cases
+    Node* temp1 = p1->next;
+    q1->next = p2;
+    q2->next = p1;
+    p1->next = p2->next;
+    p2->next = temp1;
+}
 
 int main(int argc, char const *argv[])
 {
 
-    
+    insert(1);
+    insert(2);
+    insert(3);
+    insert(4);
 
+    insert2(5);
+    insert2(6);
+    insert2(7);
+    insert2(8);
+
+
+    display();
+    cout<<endl;
+    display2();
+    cout<<endl;
+    swap2(1, 7);
+    cout<<endl;
+    display();
+    cout<<endl;
+    display2();
 
     return 0;
 }
