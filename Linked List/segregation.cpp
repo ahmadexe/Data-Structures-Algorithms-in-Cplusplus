@@ -67,15 +67,13 @@ void insertSorted(Node** first,Node** last, Node* p)
     // }
     if (!(*first) && !(*last))
     {
-        cout<<"Here 1"<<endl;
         (*first) = p;
         (*last) = p;
         cout<<"First "<<(*first)->data<<endl;
-        cout<<"First "<<(*last)->data<<endl;
+        cout<<"Last "<<(*last)->data<<endl;
     }
     else
     {
-        cout<<"Here 2"<<endl;
         cout<<(*last)->data<<endl;
         (*last)->next = p;
         (*last) = p;
