@@ -82,78 +82,6 @@ void displayCustomerInfoAll(Customer *head)
         p = p->next;
     }
 }
-// For coffee
-
-// void arrange(Shop** head)
-// {
-//     Shop* p = *head;
-//     Customer* cur = headCustomer;
-//     while (cur)
-//     {
-//         if (cur->item == "coffee")
-//         {
-//             while (p->type != "coffee")
-//             {
-//                 p = p->next;
-//             }
-//             Customer** myCustomer = &p->customer;
-//             if (*myCustomer == NULL)
-//             {
-//                 *myCustomer = cur;
-//                 (*myCustomer)->next = NULL;
-//             }
-//             else
-//             {
-//                while((*myCustomer)->next != NULL)
-//                {
-//                    *myCustomer = (*myCustomer)->next;
-//                }
-//                (*myCustomer)->next = cur;
-//             }
-//         }
-
-//         else if (cur->item == "icecream")
-//         {
-//             while (p->type != "icecream")
-//             {
-//                 p = p->next;
-//             }
-//             Customer** myCustomer = &p->customer;
-//             if (*myCustomer == NULL)
-//             {
-//                 *myCustomer = cur;
-//             }
-//             else
-//             {
-//                while((*myCustomer)->next != NULL && (*myCustomer)->next->quantity < cur->quantity)
-//                {
-//                    *myCustomer = (*myCustomer)->next;
-//                }
-//                (*myCustomer)->next = cur;
-//             }
-//         }
-
-//         else if (cur->item == "pizza")
-//         {
-//             while (p->type != "pizza")
-//             {
-//                 p = p->next;
-//             }
-//             Customer** myCustomer = &p->customer;
-//             if (*myCustomer == NULL)
-//             {
-//                 *myCustomer = cur;
-//             }
-//             else
-//             {
-//                cur->next = *myCustomer;
-//                p->customer = cur;
-//             }
-//         }
-
-//         cur = cur->next;
-//     }
-// }
 
 void arrange()
 {
@@ -169,9 +97,12 @@ void arrange()
             }
             if (p->customer == NULL)
             {
-                p->customer = cur;
-                cur = cur->next;
-                p->customer->next = NULL;
+                if (cur->item == "coffee")
+                {
+                    p->customer = cur;
+                    cur = cur->next;
+                    p->customer->next = NULL;
+                }
             }
             else
             {
@@ -180,8 +111,12 @@ void arrange()
                 {
                     myCustomer = (myCustomer)->next;
                 }
-                (myCustomer)->next = cur;
-                cur = cur->next;
+                if (cur->item == "coffee")
+                {
+                    (myCustomer)->next = cur;
+                    cur = cur->next;
+                    myCustomer->next->next = NULL;
+                }
             }
         }
 
@@ -192,7 +127,7 @@ void arrange()
             {
                 p = p->next;
             }
-            if (p->customer == NULL)
+            if (p->customer == NULL && cur->item == "icecream")
             {
                 p->customer = cur;
                 cur = cur->next;
@@ -201,12 +136,27 @@ void arrange()
             else
             {
                 Customer *myCustomer = p->customer;
-                while ((myCustomer)->next != NULL && (myCustomer)->next->quantity < cur->quantity)
+                while ((myCustomer)->next != NULL && (myCustomer)->next->quantity <= cur->quantity)
                 {
                     myCustomer = (myCustomer)->next;
                 }
-                (myCustomer)->next = cur;
-                cur = cur->next;
+                if (cur->item == "icecream")
+                {
+                    if (myCustomer->next)
+                    {
+                        Customer* q = cur;
+                        cur = cur->next;
+                        Customer* temp = myCustomer->next;
+                        myCustomer->next = q;
+                        q->next = temp;
+                    }
+                    else
+                    {
+                        myCustomer->next = cur;
+                        cur = cur->next;
+                        myCustomer->next->next = NULL;
+                    }
+                }
             }
         }
 
@@ -216,8 +166,7 @@ void arrange()
             {
                 p = p->next;
             }
-            // Customer **myCustomer = &p->customer;
-            if (p->customer == NULL)
+            if (p->customer == NULL && cur->item == "pizza")
             {
                 p->customer = cur;
                 cur = cur->next;
@@ -225,53 +174,103 @@ void arrange()
             }
             else
             {
-                Customer * q = cur;
-                cur = cur->next;
-                q->next = NULL;
-                q->next = p->customer;
-                p->customer = q;
-
+                if (cur->item == "pizza")
+                {
+                    Customer *q = cur;
+                    cur = cur->next;
+                    q->next = NULL;
+                    q->next = p->customer;
+                    p->customer = q;
+                }
             }
         }
-
-        // cur = cur->next;
-        // cout<<cur->name;
     }
 }
 
-void deliver()
+void deliver(string shopType)
 {
     Shop *p = headCoffee;
     do
     {
-        Customer *x = p->customer;
+        p = p->next;
+    } while (p != headCoffee && p->type != shopType);
+    Customer *x = p->customer;
+    if (x)
+    {
         while (x)
         {
-            if (x->item == p->type){
-                cout << x->name << " ";
+            if (x->item == shopType)
+            {
+                cout << "Name " << x->name << " ID " << x->customerId << endl;
             }
             x = x->next;
         }
-        cout<<endl;
+    }
+}
+
+int totalProfit(string shopType)
+{
+    Shop *p = headCoffee;
+    do
+    {
         p = p->next;
-    } while (p != headCoffee);
+    } while (p != headCoffee && p->type != shopType);
+    Customer *x = p->customer;
+    int sum = 0;
+    if (x)
+    {
+        while (x)
+        {
+            if (x->item == shopType)
+            {
+                sum += x->quantity * p->priceOfOneItem;
+            }
+            x = x->next;
+        }
+    }
+    return sum;
 }
 
 int main(int argc, char const *argv[])
 {
-    addCustomer("ahmad", "coffee", 1, 10);
-    addCustomer("abc", "icecream", 1, 10);
-    addCustomer("abcdef", "icecream", 1, 5);
-    addCustomer("h", "coffee", 1, 10);
-    addCustomer("xyz", "pizza", 1, 10);
+
     form();
-    // display();
-    arrange();
-    Shop * s = headCoffee;
-    cout<<s->customer->name<<" ";
-    cout<<s->customer->next->name<<" ";
+    while (true)
+    {
+        int choice;
+        cout << "1. Add customers\n2. Arrange your customers\n3. Check customers for shop.\n4. Total Profit of a shop\n5. Exit\n";
+        cin >> choice;
+        if (choice == 1)
+        {
+            string name, item;
+            int id, quantity;
+            cout << "Enter name, item, id and quantity" << endl;
+            cin >> name >> item >> id >> quantity;
+            addCustomer(name, item, id, quantity);
+        }
+        else if (choice == 2)
+        {
+            arrange();
+        }
+        else if (choice == 3)
+        {
+            string type;
+            cout << "Enter shop type" << endl;
+            cin >> type;
+            deliver(type);
+        }
+        else if (choice == 4)
+        {
+            string type;
+            cout << "Enter shop type" << endl;
+            cin >> type;
+            cout << totalProfit(type);
+        }
+        else if (choice == 5)
+        {
+            break;
+        }
+    }
 
-
-    deliver();
     return 0;
 }
