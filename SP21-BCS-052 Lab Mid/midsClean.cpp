@@ -235,7 +235,45 @@ int main(int argc, char const *argv[])
         <<"4. Serve at shop"<<endl
         <<"5. Exit"<<endl;
         cin>>choice;
-        
+        if (choice == 1)
+        {
+
+            int amount,shopid;
+            string  namePerson; 
+            cout<<"Enter qunatity: "<<endl;
+            cin>>amount;
+            cout<<"Enter the ID\n1. Coffee\n2. Ice Cream\n3. Pizza"<<endl;
+            cin>>shopid;
+            cout<<"Enter the name of customer: "<<endl;
+            getline(cin, namePerson);
+            addCustomer(amount, namePerson, shopid);
+        }
+        else if (choice == 2)
+        {
+            assemble();
+        }   
+        else if (choice == 3)
+        {
+            int idView;
+            cout<<"Enter Shop ID you want to view customers of,\n1. Coffee\n2. Ice Cream\n3. Pizza"<<endl;
+            cin>>idView;
+            display(idView);
+        }
+        else if (choice == 4)
+        {
+            int id;
+            cout<<"Enter Shop ID you want to serve at\n1. Coffee\n2. Ice Cream\n3. Pizza"<<endl;
+            cin>>id;
+            serve(id);
+        }
+        else if (choice == 5)
+        {
+            break;
+        }
+        else
+        {
+            cout<<"Invalid Choice"<<endl;
+        }
     }
        
     
