@@ -2,21 +2,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-struct down
-{
-    int data;
-    down* next;
-    down(int val)
-    {
-        data = val;
-        next = NULL;
-    }
-};
 
 struct Node{
     int data;
     Node* next;
-    down* below;
+    Node* below;
     Node(int val)
     {
         data = val;
@@ -45,18 +35,20 @@ void insertParallel(Node** head,Node** tail,int data)
 void insertBelow(Node* head,int key, int data)
 {
     Node* p = head;
-    while (p->data != key)
+    while (p->data != key && p != NULL)
     {
         p = p->next;
+    
     }
-    down* d = new down(data);
+    
+    Node* d = new Node(data);
     if (!p->below)
     {
         p->below = d;
     }
     else
     {
-        d->next = p->below;
+        d->below = p->below;
         p->below = d;
     }
 }
@@ -82,12 +74,34 @@ void displayLayer(Node* head)
             while (p->below)
             {
                 cout<<p->below->data<<" ";
-                p->below = p->below->next;
+                p->below = p->below->below;
             }
             cout<<endl;
         }
         p = p->next;
     }
+}
+
+Node* flat(Node* head)
+{
+    if (!head->next)
+    {
+        return head;
+    }
+    else
+    {
+        while (head)
+        {
+            if (head->below)
+            {
+                Node* temp = flat(head->below);
+                temp->next = head->next;
+                head->next = temp;
+            }
+            head = head->next;
+        }
+    }
+    return head;
 }
 
 int main(int argc, char const *argv[])
@@ -106,7 +120,16 @@ int main(int argc, char const *argv[])
     insertBelow(head, 20, 3);
     insertBelow(head, 20, 4);
     insertBelow(head, 20, 5);
-    displayLayer(head);
+    insertBelow(head, 20, 100);
+    insertBelow(head, 20, 200);
+    insertBelow(head, 20, 300);
+    insertBelow(head, 20, 400);
+    insertBelow(head, 20, 500);
+    Node* p = head;
+    flat(p);
+    display(head);
+
+    // displayLayer(head);
 
     return 0;
 }
