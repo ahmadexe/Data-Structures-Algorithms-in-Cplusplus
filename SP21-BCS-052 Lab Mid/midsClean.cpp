@@ -1,6 +1,10 @@
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
+#define oneCoffee 100
+#define oneIcecream 250
+#define onePizza 1200
+
 
 struct Customer
 {
@@ -155,6 +159,43 @@ void assemble()
     }
 }
 
+int calculateTotalProfit(int idShop)
+{
+    int total = 0;
+    if (idShop==1)
+    {
+        Customer* q = coffee->customer;
+        while (q)
+        {
+            total += q->quantity * oneCoffee;
+            q = q->next;
+        }
+    }
+    else if (idShop == 2)
+    {
+        Customer* q = iceCream->customer;
+        while (q)
+        {
+            total += q->quantity * oneIcecream;
+            q = q->next;
+        }
+    }
+    else if (idShop == 3)
+    {
+        Customer* q = pizza->customer;
+        while (q)
+        {
+            total += q->quantity * onePizza;
+            q = q->next;
+        }
+    }   
+    else
+    {
+        cout<<"The id is invalid"<<endl;
+    }
+    return total;
+}
+
 void display(int ID)
 {
     if (ID == 1)
@@ -233,17 +274,18 @@ int main(int argc, char const *argv[])
         <<"2. Send the customers to shops."<<endl
         <<"3. View customers at a shop"<<endl
         <<"4. Serve at shop"<<endl
-        <<"5. Exit"<<endl;
+        <<"5. Calculate total profit"<<endl
+        <<"6. Exit"<<endl;
         cin>>choice;
         if (choice == 1)
         {
-
             int amount,shopid;
             string  namePerson; 
             cout<<"Enter qunatity: "<<endl;
             cin>>amount;
             cout<<"Enter the ID\n1. Coffee\n2. Ice Cream\n3. Pizza"<<endl;
             cin>>shopid;
+            getchar();
             cout<<"Enter the name of customer: "<<endl;
             getline(cin, namePerson);
             addCustomer(amount, namePerson, shopid);
@@ -268,11 +310,18 @@ int main(int argc, char const *argv[])
         }
         else if (choice == 5)
         {
+            int id;
+            cout<<"Enter Shop ID you want to serve at\n1. Coffee\n2. Ice Cream\n3. Pizza"<<endl;
+            cin>>id;
+            cout<<calculateTotalProfit(id)<<endl;
+        }
+        else if (choice == 6)
+        {
             break;
         }
         else
         {
-            cout<<"Invalid Choice"<<endl;
+            cout<<"Invalid chocie"<<endl;
         }
     }
        
