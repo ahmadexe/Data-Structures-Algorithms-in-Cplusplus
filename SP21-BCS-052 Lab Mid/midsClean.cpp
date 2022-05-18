@@ -47,7 +47,7 @@ void form()
 
 void addCustomer(int amount, string namePerson, int shopid)
 {
-    Customer* p = new Customer(amount, namePerson, shopid);
+    Customer *p = new Customer(amount, namePerson, shopid);
     if (!headCustomer && !tailCustomer)
     {
         headCustomer = p;
@@ -62,15 +62,84 @@ void addCustomer(int amount, string namePerson, int shopid)
 
 void assemble()
 {
-    Customer* current = headCustomer;
+    Customer *current = headCustomer;
     while (current)
     {
         // Add in Coffee
         if (current->shopID == 1)
         {
-            Customer* toBeAdded = current;
+            Customer *toBeAdded = current;
             current = current->next;
-            Shop* p = coffee;
+            Shop *p = coffee;
+            if (!p->customer)
+            {
+                p->customer = toBeAdded;
+                toBeAdded->next = NULL;
+            }
+            else
+            {
+                Customer *moveForward = p->customer;
+                while (!moveForward->next)
+                {
+                    moveForward = moveForward->next;
+                }
+                moveForward->next = toBeAdded;
+                toBeAdded->next = NULL;
+            }
+        }
+
+        // Adding in icecream
+        else if (current->shopID == 2)
+        {
+            Customer *toBeAdded = current;
+            current = current->next;
+            Shop *p = iceCream;
+            if (!p->customer)
+            {
+                p->customer = toBeAdded;
+                toBeAdded->next = NULL;
+            }
+            else if (!p->customer->next)
+            {
+                if (toBeAdded->quantity <= p->customer->quantity)
+                {
+                    toBeAdded->next = p->customer;
+                    p->customer = toBeAdded;
+                }
+                else
+                {
+                    p->customer->next = toBeAdded;
+                    toBeAdded->next = NULL;
+                }
+            }
+
+            else
+            {
+                Customer* q = p->customer;
+                while (q->next->quantity < toBeAdded->quantity && q->next != NULL)
+                {
+                    q = q->next;
+                }
+                if (!q->next)
+                {
+                    q->next = toBeAdded;
+                    toBeAdded->next = NULL;
+                }
+                else
+                {
+                    toBeAdded->next = q->next;
+                    q->next = toBeAdded;
+                }
+            }
+        }
+
+        // Adding in pizza
+
+        else if (current->shopID == 3)
+        {
+            Customer *toBeAdded = current;
+            current = current->next;
+            Shop *p = pizza;
             if (!p->customer)
             {
                 p->customer = toBeAdded;
@@ -82,13 +151,8 @@ void assemble()
                 p->customer = toBeAdded;
             }
         }
-
-        // Adding in icecream 
-        else if (current->shopID == 2)
-        {
-            
-        }
-    }   
+        current = current->next;
+    }
 }
 
 int main(int argc, char const *argv[])
