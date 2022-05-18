@@ -53,11 +53,12 @@ void addCustomer(string nameOfCustomer, string itemPurchase, int id, int quantit
 void display(Shop* head)
 {
     Shop* p = head;
-    while (p)
+    do
     {
         cout<<p->type<<" ";
         p =p->next;
-    }
+    } while (p != head);
+    
 }
 
 void displayCustomerInfoAll(Customer* head)
@@ -69,25 +70,132 @@ void displayCustomerInfoAll(Customer* head)
         p = p->next;
     }
 }
+// For coffee
+void addToCoffee(Shop** head, Customer* customer)
+{
+    Shop* p = *head;
+    if (!p->customer)
+    {
+        p->customer = customer;
+    }
+    else
+    {
+        customer->next = p->customer;
+        p->customer = customer;
+    }
+}
+
+void addToIcecream(Shop** head, Customer* customer)
+{
+    Shop* p = *head;
+    if (!p->customer)
+    {
+        p->customer = customer;
+    }
+    else
+    {
+        customer->next = p->customer;
+        p->customer = customer;
+    }
+}
+
+void addToPizza(Shop** head, Customer* customer)
+{
+    Shop* p = *head;
+    if (!p->customer)
+    {
+        p->customer = customer;
+    }
+    else
+    {
+        customer->next = p->customer;
+        p->customer = customer;
+    }
+}
+
+void arrange(Shop** head)
+{
+    Shop* p = *head;
+    Customer* cur = headCustomer;
+    while (cur)
+    {
+        if (cur->item == "coffee")
+        {
+            while (p->type != "coffee")
+            {
+                p = p->next;
+            }
+            Customer* myCustomer = p->customer;
+            if (myCustomer)
+            {
+                myCustomer = cur;
+            }
+            else
+            {
+               cur->next = myCustomer;
+               p->customer = cur;
+            }
+            cout<<cur->name<<" coffee"<<endl;
+            
+        }
+        else if (cur->item == "icecream")
+        {
+            while (p->type != "icecream")
+            {
+                p = p->next;
+            }
+            Customer* myCustomer = p->customer;
+            if (myCustomer)
+            {
+                myCustomer = cur;
+            }
+            else
+            {
+               cur->next = myCustomer;
+               p->customer = cur;
+            }
+            cout<<cur->name<<" icecream"<<endl;
+        }
+        else if (cur->item == "pizza")
+        {
+            while (p->type != "pizza")
+            {
+                p = p->next;
+            }
+            Customer* myCustomer = p->customer;
+            if (myCustomer)
+            {
+                myCustomer = cur;
+            }
+            else
+            {
+               cur->next = myCustomer;
+               p->customer = cur;
+            }
+            cout<<cur->name<<" pizza"<<endl;
+        }
+        cur = cur->next;
+    }
+}
 
 int main(int argc, char const *argv[])
 {
 
     Shop* headCoffee = new Shop("coffee",100);    
-    Shop* iceCream = new Shop("iceCream", 1);
+    Shop* iceCream = new Shop("icecream", 1);
     Shop* pizza = new Shop("pizza", 10);
 
     headCoffee->next = iceCream;
     iceCream->next = pizza;
-    pizza->next = NULL;
-    // display(headCoffee);
+    pizza->next = headCoffee;
 
     addCustomer("ahmad","coffee",1,10);
     addCustomer("abc","icecream",1,10);
     addCustomer("h","coffee",1,10);
     addCustomer("xyz","pizza",1,10);
+    // printCoffeeCustomer(headCoffee);
 
-
+    arrange(&headCoffee);
 
     return 0;
 }
