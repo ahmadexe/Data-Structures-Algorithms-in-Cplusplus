@@ -206,22 +206,14 @@ void serve(int ID)
     else if (ID == 2)
     {
         Customer* q = iceCream->customer;
-        while (q)
-        {
-            cout<<"Name "<<q->name<<endl;
-            cout<<"Bought in Quantity "<<q->quantity<<endl;
-            q = q->next;
-        }
+        cout<<"Served ice cream to "<<q->name<<endl;
+        iceCream->customer = iceCream->customer->next;
     }
     else if (ID == 3)
     {
         Customer* q = pizza->customer;
-        while (q)
-        {
-            cout<<"Name "<<q->name<<endl;
-            cout<<"Bought in Quantity "<<q->quantity<<endl;
-            q = q->next;
-        }
+        cout<<"Served Pizza to "<<q->name<<endl;
+        pizza->customer = pizza->customer->next;
     }
     else
     {
@@ -232,5 +224,16 @@ void serve(int ID)
 int main(int argc, char const *argv[])
 {
 
+    form();
+    addCustomer(5,"ahmad",1);
+    addCustomer(3,"aimen",1);
+    addCustomer(5,"hunaina",2);
+    addCustomer(7,"ali", 2);
+    addCustomer(9,"ABC",2);
+    addCustomer(2,"XYZ",3);
+    display(1);
+    display(2);
+    display(3);
+    
     return 0;
 }
