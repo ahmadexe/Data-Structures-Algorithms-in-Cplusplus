@@ -142,7 +142,15 @@ void arrange()
                 }
                 if (cur->item == "icecream")
                 {
-                    if (myCustomer->next)
+                    if (p->customer->quantity >= cur->quantity)
+                    {
+                        Customer* q = cur;
+                        cur = cur->next;
+                        Customer* temp = p->customer;
+                        p->customer = q;
+                        q->next = temp;
+                    }
+                    else if (myCustomer->next)
                     {
                         Customer* q = cur;
                         cur = cur->next;
@@ -208,6 +216,16 @@ void deliver(string shopType)
     }
 }
 
+void serve(string shopType)
+{
+    Shop *p = headCoffee;
+    do
+    {
+        p = p->next;
+    } while (p != headCoffee && p->type != shopType);
+    p->customer = p->customer->next;
+}
+
 int totalProfit(string shopType)
 {
     Shop *p = headCoffee;
@@ -238,7 +256,7 @@ int main(int argc, char const *argv[])
     while (true)
     {
         int choice;
-        cout << "1. Add customers\n2. Arrange your customers\n3. Check customers for shop.\n4. Total Profit of a shop\n5. Exit\n";
+        cout << "\n1. Add customers\n2. Arrange your customers\n3. Check customers for shop.\n4. Total Profit of a shop\n5. Serve\n6. Exit\n";
         cin >> choice;
         if (choice == 1)
         {
@@ -267,6 +285,13 @@ int main(int argc, char const *argv[])
             cout << totalProfit(type);
         }
         else if (choice == 5)
+        {
+            string type;
+            cout << "Enter shop type" << endl;
+            cin >> type;
+            serve(type);
+        }
+        else if (choice == 6)
         {
             break;
         }
