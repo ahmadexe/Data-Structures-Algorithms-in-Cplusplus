@@ -155,6 +155,80 @@ void assemble()
     }
 }
 
+void display(int ID)
+{
+    if (ID == 1)
+    {
+        Customer* q = coffee->customer;
+        while (q)
+        {
+            cout<<"Name "<<q->name<<endl;
+            cout<<"Bought in Quantity "<<q->quantity<<endl;
+            q = q->next;
+        }
+    }
+
+    else if (ID == 2)
+    {
+        Customer* q = iceCream->customer;
+        while (q)
+        {
+            cout<<"Name "<<q->name<<endl;
+            cout<<"Bought in Quantity "<<q->quantity<<endl;
+            q = q->next;
+        }
+    }
+    else if (ID == 3)
+    {
+        Customer* q = pizza->customer;
+        while (q)
+        {
+            cout<<"Name "<<q->name<<endl;
+            cout<<"Bought in Quantity "<<q->quantity<<endl;
+            q = q->next;
+        }
+    }
+    else
+    {
+        cout<<"Customer with a wrong ID detected"<<endl;
+    }
+}
+
+void serve(int ID)
+{
+    if (ID == 1)
+    {
+        Customer* q = coffee->customer;
+        cout<<"Served coffee to "<<q->name<<endl;
+        coffee->customer = coffee->customer->next;
+    }
+
+    else if (ID == 2)
+    {
+        Customer* q = iceCream->customer;
+        while (q)
+        {
+            cout<<"Name "<<q->name<<endl;
+            cout<<"Bought in Quantity "<<q->quantity<<endl;
+            q = q->next;
+        }
+    }
+    else if (ID == 3)
+    {
+        Customer* q = pizza->customer;
+        while (q)
+        {
+            cout<<"Name "<<q->name<<endl;
+            cout<<"Bought in Quantity "<<q->quantity<<endl;
+            q = q->next;
+        }
+    }
+    else
+    {
+        cout<<"Customer with a wrong ID detected"<<endl;
+    }
+}
+
 int main(int argc, char const *argv[])
 {
 
