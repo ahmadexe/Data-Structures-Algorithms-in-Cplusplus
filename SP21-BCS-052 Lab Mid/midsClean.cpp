@@ -4,13 +4,13 @@ using namespace std;
 
 struct Customer
 {
-    int id;
+    int quantity;
     string name;
     int shopID;
     Customer *next;
-    Customer(int ID, string namePerson, int shopid)
+    Customer(int amount, string namePerson, int shopid)
     {
-        id = ID;
+        quantity = amount;
         name = namePerson;
         shopID = shopid,
         next = NULL;
@@ -45,13 +45,50 @@ void form()
     pizza->next = coffee;
 }
 
-void addCustomer(int ID, string namePerson, int shopid)
+void addCustomer(int amount, string namePerson, int shopid)
 {
-    Customer* p = new Customer()
+    Customer* p = new Customer(amount, namePerson, shopid);
     if (!headCustomer && !tailCustomer)
     {
-
+        headCustomer = p;
+        tailCustomer = p;
     }
+    else
+    {
+        tailCustomer->next = p;
+        tailCustomer = p;
+    }
+}
+
+void assemble()
+{
+    Customer* current = headCustomer;
+    while (current)
+    {
+        // Add in Coffee
+        if (current->shopID == 1)
+        {
+            Customer* toBeAdded = current;
+            current = current->next;
+            Shop* p = coffee;
+            if (!p->customer)
+            {
+                p->customer = toBeAdded;
+                toBeAdded->next = NULL;
+            }
+            else
+            {
+                toBeAdded->next = p->customer;
+                p->customer = toBeAdded;
+            }
+        }
+
+        // Adding in icecream 
+        else if (current->shopID == 2)
+        {
+            
+        }
+    }   
 }
 
 int main(int argc, char const *argv[])
