@@ -40,6 +40,27 @@ void insertParallel(Node** head,Node** tail,int data)
     }
 }
 
+
+
+void insertBelow(Node* head,int key, int data)
+{
+    Node* p = head;
+    while (p->data != key)
+    {
+        p = p->next;
+    }
+    down* d = new down(data);
+    if (!p->below)
+    {
+        p->below = d;
+    }
+    else
+    {
+        d->next = p->below;
+        p->below = d;
+    }
+}
+
 void display(Node* head)
 {
     Node* p = head;
@@ -49,6 +70,24 @@ void display(Node* head)
         p = p->next;
     }
     cout<<endl;
+}
+
+void displayLayer(Node* head)
+{
+    Node* p = head;
+    while (p)
+    {
+        if (p->below)
+        {
+            while (p->below)
+            {
+                cout<<p->below->data<<" ";
+                p->below = p->below->next;
+            }
+            cout<<endl;
+        }
+        p = p->next;
+    }
 }
 
 int main(int argc, char const *argv[])
@@ -62,7 +101,12 @@ int main(int argc, char const *argv[])
     insertParallel(&head, &tail, 40);
     insertParallel(&head, &tail, 50);
     display(head);
-
+    insertBelow(head, 20, 1);
+    insertBelow(head, 20, 2);
+    insertBelow(head, 20, 3);
+    insertBelow(head, 20, 4);
+    insertBelow(head, 20, 5);
+    displayLayer(head);
 
     return 0;
 }
