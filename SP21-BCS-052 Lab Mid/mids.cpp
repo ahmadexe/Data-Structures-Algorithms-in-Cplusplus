@@ -29,6 +29,8 @@ struct Shop
     {
         type = typeOfShop;
         priceOfOneItem = price;
+        next = NULL;
+        customer = NULL;
     }
 };
 
@@ -126,18 +128,21 @@ void arrange(Shop** head)
                 p = p->next;
             }
             Customer* myCustomer = p->customer;
-            if (myCustomer)
+            if (myCustomer == NULL)
             {
                 myCustomer = cur;
             }
             else
             {
-               cur->next = myCustomer;
-               p->customer = cur;
+               while(myCustomer->next != NULL)
+               {
+                   myCustomer = myCustomer->next;
+               }
+               myCustomer->next = cur;
             }
-            cout<<cur->name<<" coffee"<<endl;
-            
+   
         }
+
         else if (cur->item == "icecream")
         {
             while (p->type != "icecream")
@@ -145,17 +150,20 @@ void arrange(Shop** head)
                 p = p->next;
             }
             Customer* myCustomer = p->customer;
-            if (myCustomer)
+            if (myCustomer == NULL)
             {
                 myCustomer = cur;
             }
             else
             {
-               cur->next = myCustomer;
-               p->customer = cur;
+               while(myCustomer->next != NULL && myCustomer->next->quantity < cur->quantity)
+               {
+                   myCustomer = myCustomer->next;
+               }
+               myCustomer->next = cur;
             }
-            cout<<cur->name<<" icecream"<<endl;
         }
+        
         else if (cur->item == "pizza")
         {
             while (p->type != "pizza")
@@ -163,17 +171,17 @@ void arrange(Shop** head)
                 p = p->next;
             }
             Customer* myCustomer = p->customer;
-            if (myCustomer)
+            if (myCustomer == NULL)
             {
                 myCustomer = cur;
             }
             else
             {
-               cur->next = myCustomer;
+               cur->next = p->customer;
                p->customer = cur;
             }
-            cout<<cur->name<<" pizza"<<endl;
         }
+        
         cur = cur->next;
     }
 }
@@ -191,6 +199,7 @@ int main(int argc, char const *argv[])
 
     addCustomer("ahmad","coffee",1,10);
     addCustomer("abc","icecream",1,10);
+    addCustomer("abcdef","icecream",1,20);
     addCustomer("h","coffee",1,10);
     addCustomer("xyz","pizza",1,10);
     // printCoffeeCustomer(headCoffee);
