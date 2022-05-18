@@ -79,7 +79,7 @@ void assemble()
             else
             {
                 Customer *moveForward = p->customer;
-                while (!moveForward->next)
+                while (moveForward->next)
                 {
                     moveForward = moveForward->next;
                 }
@@ -101,6 +101,7 @@ void assemble()
             }
             else if (!p->customer->next)
             {
+
                 if (toBeAdded->quantity <= p->customer->quantity)
                 {
                     toBeAdded->next = p->customer;
@@ -116,7 +117,7 @@ void assemble()
             else
             {
                 Customer* q = p->customer;
-                while (q->next->quantity < toBeAdded->quantity && q->next != NULL)
+                while ((q->next != NULL) && q->next->quantity < toBeAdded->quantity)
                 {
                     q = q->next;
                 }
@@ -151,7 +152,6 @@ void assemble()
                 p->customer = toBeAdded;
             }
         }
-        current = current->next;
     }
 }
 
@@ -163,7 +163,7 @@ void display(int ID)
         while (q)
         {
             cout<<"Name "<<q->name<<endl;
-            cout<<"Bought in Quantity "<<q->quantity<<endl;
+            cout<<"Bought coffee in Quantity "<<q->quantity<<endl;
             q = q->next;
         }
     }
@@ -174,7 +174,7 @@ void display(int ID)
         while (q)
         {
             cout<<"Name "<<q->name<<endl;
-            cout<<"Bought in Quantity "<<q->quantity<<endl;
+            cout<<"Bought ice cream in Quantity "<<q->quantity<<endl;
             q = q->next;
         }
     }
@@ -184,7 +184,7 @@ void display(int ID)
         while (q)
         {
             cout<<"Name "<<q->name<<endl;
-            cout<<"Bought in Quantity "<<q->quantity<<endl;
+            cout<<"Bought pizza in Quantity "<<q->quantity<<endl;
             q = q->next;
         }
     }
@@ -225,15 +225,19 @@ int main(int argc, char const *argv[])
 {
 
     form();
-    addCustomer(5,"ahmad",1);
-    addCustomer(3,"aimen",1);
-    addCustomer(5,"hunaina",2);
-    addCustomer(7,"ali", 2);
-    addCustomer(9,"ABC",2);
-    addCustomer(2,"XYZ",3);
-    display(1);
-    display(2);
-    display(3);
+    while (1)
+    {
+        int choice;
+        cout
+        <<"1. Add customers in line"<<endl
+        <<"2. Send the customers to shops."<<endl
+        <<"3. View customers at a shop"<<endl
+        <<"4. Serve at shop"<<endl
+        <<"5. Exit"<<endl;
+        cin>>choice;
+        
+    }
+       
     
     return 0;
 }
