@@ -31,34 +31,29 @@ void inOrder(Node* root)
 
 Node* rightRotation(Node* root)
 {
-    if (!root->left)
-    {
-        return root;
-    }
-    else
-    {
         Node* x = root->left;
         Node* temp = x->right;
+        if (x)
+        {
         x->right = root;
         root->left = temp;
         return x;
-    }
+        }
+        return root;
 }
 
 Node* leftRotation(Node* root)
 {
-    if (!root->right)
+    
+    Node* x = root->right;
+    Node* temp = x->left;
+    if (x)
     {
-        return root;
+    x->left = root;
+    root->right = temp;
+    return x;
     }
-    else
-    {
-        Node* x = root->right;
-        Node* temp = x->left;
-        x->left = root;
-        root->right = temp;
-        return x;
-    }
+    return root;
 }
 
 int height(Node* root)
@@ -86,8 +81,9 @@ Node* insert(Node* r, Node* insertNode)
     if (!r)
     {
         r = insertNode;
+        return r;
     }
-    else if (insertNode->data > r->data)
+    if (insertNode->data > r->data)
     {
         r->right = insert(r->right, insertNode);
     }
@@ -107,33 +103,33 @@ Node* insert(Node* r, Node* insertNode)
     {
         return rightRotation(r);
     }
-    if (bf > 1 && r->left->data < insertNode->data)
-    {
-        r->left = leftRotation(r);
-        return rightRotation(r);
-    }
     if (bf < -1 && r->right->data < insertNode->data)
     {
         return leftRotation(r);
     }
+    if (bf > 1 && r->left->data < insertNode->data)
+    {
+        r->left = leftRotation(r->left);
+        return rightRotation(r);
+    }
     if (bf < -1 && r->right->data > insertNode->data)
     {
-        r->right = rightRotation(r);
+        r->right = rightRotation(r->right);
         return leftRotation(r);
     }
+
     return r;
 }
 
 int main(int argc, char const *argv[])
 {
-
+ 
     Node* root = NULL;   
-    root = insert(root, new Node(50));
-    root = insert(root, new Node(40));
-    root = insert(root, new Node(30));
+    root = insert(root, new Node(1));
     root = insert(root, new Node(20));
-    root = insert(root, new Node(10));
-
+    root = insert(root, new Node(3));
+    root = insert(root, new Node(4));
+ 
     inOrder(root);
  
  
