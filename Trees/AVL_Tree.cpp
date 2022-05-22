@@ -64,7 +64,7 @@ int height(Node* root)
     }
     return (max(height(root->left), height(root->right)) + 1);
 }
-
+ 
 int balanceFactor(Node* root)
 {
     if (!root)
@@ -98,7 +98,7 @@ Node* insert(Node* r, Node* insertNode)
     }
     
     int bf = balanceFactor(r);
-
+ 
     if (bf > 1 && r->left->data > insertNode->data)
     {
         return rightRotation(r);
@@ -117,10 +117,10 @@ Node* insert(Node* r, Node* insertNode)
         r->right = rightRotation(r->right);
         return leftRotation(r);
     }
-
+ 
     return r;
 }
-
+ 
 int main(int argc, char const *argv[])
 {
  
