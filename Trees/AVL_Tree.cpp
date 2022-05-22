@@ -127,7 +127,8 @@ Node* insert(Node* r, Node* insertNode)
 int main(int argc, char const *argv[])
 {
 
-    Node* root = new Node(50);   
+    Node* root = NULL;   
+    root = insert(root, new Node(50));
     root = insert(root, new Node(40));
     root = insert(root, new Node(30));
     root = insert(root, new Node(20));
