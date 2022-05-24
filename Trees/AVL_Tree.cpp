@@ -1,12 +1,12 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Node
 {
     int data;
-    Node* left;
-    Node* right;
+    Node *left;
+    Node *right;
     Node(int val)
     {
         data = val;
@@ -15,7 +15,7 @@ struct Node
     }
 };
 
-void inOrder(Node* root)
+void inOrder(Node *root)
 {
     if (!root)
     {
@@ -24,39 +24,39 @@ void inOrder(Node* root)
     else
     {
         inOrder(root->left);
-        cout<<root->data;
+        cout << root->data;
         inOrder(root->right);
     }
 }
 
-Node* rightRotation(Node* root)
+Node *rightRotation(Node *root)
 {
-        Node* x = root->left;
-        Node* temp = x->right;
-        if (x)
-        {
+    Node *x = root->left;
+    Node *temp = x->right;
+    if (x)
+    {
         x->right = root;
         root->left = temp;
         return x;
-        }
-        return root;
-}
-
-Node* leftRotation(Node* root)
-{
-    
-    Node* x = root->right;
-    Node* temp = x->left;
-    if (x)
-    {
-    x->left = root;
-    root->right = temp;
-    return x;
     }
     return root;
 }
 
-int height(Node* root)
+Node *leftRotation(Node *root)
+{
+
+    Node *x = root->right;
+    Node *temp = x->left;
+    if (x)
+    {
+        x->left = root;
+        root->right = temp;
+        return x;
+    }
+    return root;
+}
+
+int height(Node *root)
 {
     if (!root)
     {
@@ -64,8 +64,8 @@ int height(Node* root)
     }
     return (max(height(root->left), height(root->right)) + 1);
 }
- 
-int balanceFactor(Node* root)
+
+int balanceFactor(Node *root)
 {
     if (!root)
     {
@@ -76,7 +76,7 @@ int balanceFactor(Node* root)
     return (left - right);
 }
 
-Node* insert(Node* r, Node* insertNode)
+Node *insert(Node *r, Node *insertNode)
 {
     if (!r)
     {
@@ -93,12 +93,12 @@ Node* insert(Node* r, Node* insertNode)
     }
     else
     {
-        cout<<"Can't add duplicate values"<<endl;
+        cout << "Can't add duplicate values" << endl;
         return r;
     }
-    
+
     int bf = balanceFactor(r);
- 
+
     if (bf > 1 && r->left->data > insertNode->data)
     {
         return rightRotation(r);
@@ -117,21 +117,20 @@ Node* insert(Node* r, Node* insertNode)
         r->right = rightRotation(r->right);
         return leftRotation(r);
     }
- 
+
     return r;
 }
- 
+
 int main(int argc, char const *argv[])
 {
- 
-    Node* root = NULL;   
+
+    Node *root = NULL;
     root = insert(root, new Node(1));
     root = insert(root, new Node(20));
     root = insert(root, new Node(3));
     root = insert(root, new Node(4));
- 
+
     inOrder(root);
- 
- 
+
     return 0;
 }
