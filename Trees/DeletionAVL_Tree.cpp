@@ -180,6 +180,31 @@ Node* deleteNode(Node* root, int key)
             }
         }
     }
+    int bf = balanceFactor(root);
+    if (bf > 1)
+    {
+        if (root->left->left)
+        {
+            return rightRotation(root);
+        }
+        else
+        {
+            root->left = leftRotation(root->left);
+            return rightRotation(root);
+        }
+    }
+    if (bf < -1)
+    {
+        if (root->right->right)
+        {
+            return leftRotation(root);
+        }
+        else
+        {
+            root->right = rightRotation(root);
+            return leftRotation(root);
+        }
+    }
     return root;
 }
 
@@ -193,7 +218,7 @@ int main(int argc, char const *argv[])
     root = insert(root, new Node(4));
     root = insert(root, new Node(30));
     root = insert(root, new Node(2));
-    root = deleteNode(root, 2);
+    root = deleteNode(root, 30);
     inOrder(root);
 
     return 0;
