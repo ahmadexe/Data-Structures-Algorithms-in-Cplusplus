@@ -15,7 +15,7 @@ struct Heap
     }
 };
 
-Heap *heap = new Heap(20);
+Heap *heap = new Heap(6);
 
 int isFull()
 {
@@ -55,6 +55,46 @@ void print()
     cout<<endl;
 }
 
+int indexMin(int left, int right)
+{
+    if (heap->arr[left] < heap->arr[right])
+    {
+        return left;
+    }
+    return right;
+}
+
+int getMin()
+{
+    int min = heap->arr[0];
+    heap->arr[0] = heap->arr[heap->last];
+    heap->last--;
+    int i = 0;
+    int leftChildIndex = (2 * i) + 1;
+    int rightChildIndex = (2 * i) + 2;
+    int minIndex = indexMin(leftChildIndex, rightChildIndex);
+    
+    while (minIndex <= heap->last && i <= heap->last)
+    {
+        
+        if (heap->arr[i] > heap->arr[minIndex])
+        {
+            int temp = heap->arr[i];
+            heap->arr[i] = heap->arr[minIndex];
+            heap->arr[minIndex] = temp;
+            i = minIndex;
+        }
+        else
+        {
+            break;
+        }
+        leftChildIndex = (2 * i) + 1;
+        rightChildIndex = (2 * i) + 2;
+        int minIndex = indexMin(leftChildIndex, rightChildIndex);
+    }
+    return min;
+}
+
 int main(int argc, char const *argv[])
 {
     insert(3);
@@ -63,15 +103,18 @@ int main(int argc, char const *argv[])
     insert(37);
     insert(16);
     insert(12);
-    insert(22);
-    insert(4);
-    insert(44);
-    insert(32);
-    insert(19);
-    insert(47);
-    insert(50);
+    
+ 
+    cout<<getMin()<<endl;
+    cout<<getMin()<<endl;
+    cout<<getMin()<<endl;
+    cout<<getMin()<<endl;
+    cout<<getMin()<<endl;
+    cout<<getMin()<<endl;
 
-    print();
+
+
+
     
     return 0;
 }
