@@ -126,7 +126,7 @@ int main(int argc, char const *argv[])
     Node* p = root1;
     inOrder(root1);
     cout<<"\n";
-    deleteNode(p, 10);
+    root1  =  deleteNode(p, 40);
     cout<<"\n";
     inOrder(root1);
  
