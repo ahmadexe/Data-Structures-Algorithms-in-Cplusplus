@@ -3,10 +3,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<int> v[10];
-
 int main(int argc, char const *argv[])
 {
+    vector<int> v[10];
+
     v[0].push_back(0);
     v[0].push_back(1);
     v[0].push_back(2);
@@ -19,8 +19,6 @@ int main(int argc, char const *argv[])
     v[1].push_back(40);
     v[1].push_back(50);
 
-    v[1];
-
     for (int i = 0; i < 2; i++)
     {
         for (int j = 0; j < 5; j++)
@@ -29,7 +27,6 @@ int main(int argc, char const *argv[])
         }
         cout<<endl;
     }
-
 
     return 0;
 }
