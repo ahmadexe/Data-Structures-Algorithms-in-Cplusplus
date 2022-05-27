@@ -14,7 +14,6 @@ void dfs(int vertex)
     if (visited[vertex])
         return;
     visited[vertex] = true;
-    cout<<vertex<<" ";
     for (int child : vertices[vertex])
     {
     /*
@@ -25,6 +24,7 @@ void dfs(int vertex)
     * Take action on the child after leaving the child.
     */
     }
+    cout<<vertex<<" ";
     /*
     * Take action on the vertex before leaving the vertex.
     */
