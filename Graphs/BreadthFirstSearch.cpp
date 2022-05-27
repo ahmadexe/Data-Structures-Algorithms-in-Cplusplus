@@ -16,14 +16,15 @@ void bfs(int source)
     {
         int outVal = q.front();
         q.pop();
-        // cout<<outVal<<" ";
+        cout<<outVal<<" ";
         for (int child : vertices[outVal])
         {
             if (!visited[child])
+            {
                 q.push(child);
-            visited[child] = true;
-            cout<<endl<<outVal<<" xyz "<<level[outVal]<<" ";
-            level[child] = level[outVal] + 1;
+                level[child] = level[outVal] + 1;
+                visited[child] = true;
+            }
         }
     }
     cout<<endl;
