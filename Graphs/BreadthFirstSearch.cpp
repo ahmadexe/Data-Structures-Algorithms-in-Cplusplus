@@ -28,7 +28,6 @@ void bfs(int source)
 
 int main(int argc, char const *argv[])
 {
-
     int vertex, edges;
     cin>>vertex>>edges;
     for (int i = 0; i < edges; i++)
@@ -40,6 +39,5 @@ int main(int argc, char const *argv[])
     }    
 
     bfs(1);
-
     return 0;
 }
