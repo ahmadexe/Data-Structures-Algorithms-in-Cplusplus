@@ -5,6 +5,7 @@ using namespace std;
 const int N = 1e5;
 bool visited[N];
 vector<int> vertices[N];
+static int level[N];
 
 void bfs(int source)
 {
@@ -15,12 +16,14 @@ void bfs(int source)
     {
         int outVal = q.front();
         q.pop();
-        cout<<outVal<<" ";
+        // cout<<outVal<<" ";
         for (int child : vertices[outVal])
         {
             if (!visited[child])
                 q.push(child);
             visited[child] = true;
+            cout<<endl<<outVal<<" xyz "<<level[outVal]<<" ";
+            level[child] = level[outVal] + 1;
         }
     }
     cout<<endl;
@@ -39,5 +42,11 @@ int main(int argc, char const *argv[])
     }    
 
     bfs(1);
+    cout<<endl;
+    for (int i = 1; i <= vertex; i++)
+    {
+        cout<<i<<" node has level  "<<level[i]<<endl;
+    }
+
     return 0;
 }
