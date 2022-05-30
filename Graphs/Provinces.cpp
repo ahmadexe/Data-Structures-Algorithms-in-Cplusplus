@@ -1,5 +1,5 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int N = 1e3;
@@ -41,17 +41,19 @@ int main(int argc, char const *argv[])
 {
 
     int nodes, edges;
-    cin>>nodes>>edges;
+    cin >> nodes >> edges;
     for (int i = 0; i < edges; i++)
     {
-        int v1,v2;
-        cin>>v1>>v2;
-        graph[v1].push_back(v2);
-        graph[v2].push_back(v1);
+        int v1, v2;
+        cin >> v1 >> v2;
+        
+            graph[v1].push_back(v2);
+            graph[v2].push_back(v1);
+
     }
 
     findProvinces(nodes);
-    cout<<totalProvinces;
+    cout << totalProvinces;
 
     return 0;
 }
