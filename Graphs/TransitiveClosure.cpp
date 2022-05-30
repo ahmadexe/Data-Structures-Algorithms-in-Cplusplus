@@ -1,7 +1,7 @@
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
-
+ 
 const int N = 1e3;
 vector<int> graph[N];
 int visited[N];
