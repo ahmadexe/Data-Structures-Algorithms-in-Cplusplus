@@ -1,6 +1,6 @@
 // Representation with weights
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main(int argc, char const *argv[])
@@ -23,9 +23,9 @@ int main(int argc, char const *argv[])
     {
         for (int j = 0; j < 5; j++)
         {
-            cout<<v[i][j]<<" ";
+            cout << v[i][j] << " ";
         }
-        cout<<endl;
+        cout << endl;
     }
 
     return 0;

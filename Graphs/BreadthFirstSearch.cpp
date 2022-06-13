@@ -42,7 +42,7 @@ int main(int argc, char const *argv[])
         vertices[v2].push_back(v1);
     }    
 
-    bfs(1);
+    bfs(0);
     cout<<endl;
     for (int i = 1; i <= vertex; i++)
     {

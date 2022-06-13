@@ -34,7 +34,6 @@ vector<int> dijkstra(int source)
 
 int main(int argc, char const *argv[])
 {
-
     int vertices, edges;
     cin>>vertices>>edges;
     for (int i = 0; i < edges; i++)
@@ -45,7 +44,7 @@ int main(int argc, char const *argv[])
     }
 
     vector<int> distance = dijkstra(0);
-     for (int i = 0; i < vertices; i++)
+    for (int i = 0; i < vertices; i++)
     {
         cout<<"0"<<" - "<<i<<" "<<distance[i]<<endl;
     }
