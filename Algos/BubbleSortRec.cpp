@@ -8,11 +8,13 @@ void bubbleSort(int arr[], int len)
     {
         return;
     }
-    for (int i = 0; i < len - 1; i++)
+    for (int i = 0; i < len ; i++)
     {
         if (arr[i] > arr[i + 1])
         {
-            swap(arr[i], arr[i + 1]);
+            int temp = arr[i];
+            arr[i] = arr[i+1];
+            arr[i+1] = temp;
         }
     }
     bubbleSort(arr, len - 1);
