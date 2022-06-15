@@ -22,11 +22,11 @@ void dfs(int vertex)
     */
         dfs(child);
     /*
-    * Take action on the child after leaving the child.
+    * Take action on the child after leaving the stack.
     */
     }
     /*
-    * Take action on the vertex before leaving the vertex.
+    * Take action on the vertex before leaving.
     */
 }
 
