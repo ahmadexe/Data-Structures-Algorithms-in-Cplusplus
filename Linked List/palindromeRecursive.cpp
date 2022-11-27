@@ -78,20 +78,26 @@ int checkPalindrome(Node* p, Node* q)
     return flag;
 }
 
+void displayIt(Node* p)
+{
+    if (!p->next || !p)
+    {
+        return;
+    }
+    int temp = p->data;
+    displayIt(p->next);
+    cout << temp << " " << p->data <<" ";
+}
+
 int main(int argc, char const *argv[])
 {
 
     insert1(10);
     insert1(20);
-    insert1(20);
     insert1(30);
-
-    insert2(10);
-    insert2(20);
-    insert2(20);
-    insert2(30);
-
-    cout<<checkPalindrome(head1, head2);
+    insert1(40);
+    Node* p = head1;
+    displayIt(p);
 
     return 0;
 }

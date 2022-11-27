@@ -121,11 +121,11 @@ Node *insert(Node *r, Node *insertNode)
     return r;
 }
 
-Node* inOrderPrePost(Node* root)
+Node *inOrderPrePost(Node *root)
 {
     if (root->left)
     {
-        Node* x = root->left;
+        Node *x = root->left;
         while (x->right)
         {
             x = x->right;
@@ -134,7 +134,7 @@ Node* inOrderPrePost(Node* root)
     }
     else if (root->right)
     {
-        Node* x = root->right;
+        Node *x = root->right;
         while (x->left)
         {
             x = x->left;
@@ -144,7 +144,7 @@ Node* inOrderPrePost(Node* root)
     return root;
 }
 
-Node* deleteNode(Node* root, int key)
+Node *deleteNode(Node *root, int key)
 {
     if (!root)
     {
@@ -168,7 +168,7 @@ Node* deleteNode(Node* root, int key)
         }
         else
         {
-            Node* temp = inOrderPrePost(root);
+            Node *temp = inOrderPrePost(root);
             root->data = temp->data;
             if (root->left)
             {

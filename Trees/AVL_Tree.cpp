@@ -2,6 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Struct for the node defined
 struct Node
 {
     int data;
@@ -15,6 +16,7 @@ struct Node
     }
 };
 
+// Print BST inorder - iteratively
 void inOrder(Node *root)
 {
     if (!root)
@@ -24,11 +26,12 @@ void inOrder(Node *root)
     else
     {
         inOrder(root->left);
-        cout << root->data;
+        cout << root->data <<" ";
         inOrder(root->right);
     }
 }
 
+// Perform right rotation on a node.
 Node *rightRotation(Node *root)
 {
     Node *x = root->left;
@@ -42,6 +45,7 @@ Node *rightRotation(Node *root)
     return root;
 }
 
+// Perform left rotation on a node
 Node *leftRotation(Node *root)
 {
 
@@ -56,6 +60,7 @@ Node *leftRotation(Node *root)
     return root;
 }
 
+// Find height of the tree
 int height(Node *root)
 {
     if (!root)
@@ -65,6 +70,7 @@ int height(Node *root)
     return (max(height(root->left), height(root->right)) + 1);
 }
 
+// Get the balance factor at a node.
 int balanceFactor(Node *root)
 {
     if (!root)
@@ -76,6 +82,7 @@ int balanceFactor(Node *root)
     return (left - right);
 }
 
+// Insert the node in tree and balance the tree if it gets out of balance at any point.
 Node *insert(Node *r, Node *insertNode)
 {
     if (!r)
@@ -83,6 +90,7 @@ Node *insert(Node *r, Node *insertNode)
         r = insertNode;
         return r;
     }
+
     if (insertNode->data > r->data)
     {
         r->right = insert(r->right, insertNode);
@@ -123,14 +131,17 @@ Node *insert(Node *r, Node *insertNode)
 
 int main(int argc, char const *argv[])
 {
-
     Node *root = NULL;
     root = insert(root, new Node(1));
-    root = insert(root, new Node(20));
+    root = insert(root, new Node(7));
     root = insert(root, new Node(3));
+    root = insert(root, new Node(14));
+    root = insert(root, new Node(5));
+    root = insert(root, new Node(6));
     root = insert(root, new Node(4));
+    root = insert(root, new Node(2));
+    root = insert(root, new Node(0));
 
     inOrder(root);
-
     return 0;
 }

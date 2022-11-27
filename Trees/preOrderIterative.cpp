@@ -53,7 +53,6 @@ void preOrder(Node* root)
         if (p->right)
         {
             s.push(p->right);
-            // p = p->right;
         }
         if (p->left)
         {

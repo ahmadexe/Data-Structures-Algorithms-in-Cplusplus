@@ -36,7 +36,7 @@ void Prims(int source)
 }
 
 int main(int argc, char const *argv[])
-{
+{   
 
     int vertices, edges;
     cin>>vertices>>edges;
@@ -52,6 +52,7 @@ int main(int argc, char const *argv[])
     int sum = 0;
     for (int i = 0; i <= vertices; i++)
     {
+        // cout << "0 " << i << " " << distanceArr[i] << endl;
         sum += distanceArr[i];
     }
     cout<<sum<<endl;

@@ -237,6 +237,6 @@ string postfix(string infix)
 
 int main(int argc, char const *argv[])
 {
-    cout<<postfix("(a+b)*(k-x)/(y+d)");
+    cout<<postfix("(a+b+c)*d-(e/f*(g+h))");
     return 0;
 }
