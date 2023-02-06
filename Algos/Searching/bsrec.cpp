@@ -1,5 +1,5 @@
 #include<iostream>
-#include<bits/stdc++.h>
+
 using namespace std;
 
 void binarySearchRecusrssive(int arr[], int key, int low, int high) {
